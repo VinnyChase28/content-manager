@@ -14,7 +14,7 @@ const StyledLink = styled.a`
   padding: 0rem 2rem;
   text-decoration: underline 0.15em white;
   text-underline-offset: 0.2em;
-  text-shadow: 1px 1px #ff1493;
+  text-shadow: 0.4px 0.4px #ff1493;
   transition: text-decoration-color 1200ms, text-underline-offset 1200ms;
   content: "|";
   padding-left: 1em;
