@@ -1,14 +1,10 @@
 import {
   CardWrapper,
   CardImage,
-  CardTextWrapper,
   CardTextDate,
-  CardTextTitle,
-  CardTextBody,
-  CardStatWrapper,
-  CardStats,
-  LinkText,
   Item,
+  CardTextWrapper,
+  CardTextTitle,
 } from "./CardStyles";
 
 export const Card = ({ item }) => {
@@ -18,8 +14,11 @@ export const Card = ({ item }) => {
         <CardImage
           background={"https://image.tmdb.org/t/p/w500" + item.poster_path}
         />
+        <CardTextWrapper>
+          <CardTextDate>{item.release_date}</CardTextDate>
 
-        <CardTextDate>{item.release_date}</CardTextDate>
+          <CardTextTitle>{item.original_title}</CardTextTitle>
+        </CardTextWrapper>
       </CardWrapper>
     </Item>
   );

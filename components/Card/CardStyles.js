@@ -17,6 +17,10 @@ export const Item = styled.div`
   justify-content: center;
   padding: 0.5rem;
   margin-top: 10px;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const CardImage = styled.div`
@@ -38,7 +42,7 @@ export const CardTextDate = styled.span`
 `;
 
 export const CardTextTitle = styled.h2`
-  margin-top: 0px;
+  margin-top: 20px;
   font-size: 1.2rem;
   box-sizing: border-box;
   min-width: 0px;
