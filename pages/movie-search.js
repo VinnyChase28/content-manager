@@ -41,21 +41,24 @@ const urls = {
 
 const MovieSearchView = (props) => {
   // const [movieData, setMovieData] = useState(null);
-  const [results, setResults] = useState({});
+  const [results, setResults] = useState({
+    popular: [],
+    upcoming: [],
+    topRated: [],
+  });
   const [isLoading, setLoading] = useState(true);
 
   //grab popular movie data
 
   const fetchApis = async () => {
     try {
-      setLoading(true);
       const responses = await Promise.all(
         Object.entries(urls).map(async ([key, url]) => {
           const res = await fetch(url);
           return [key, (await res.json()).results];
         })
       );
-
+      console.log(Object.fromEntries(responses));
       return Object.fromEntries(responses);
     } catch (err) {
       console.error(err);
@@ -63,40 +66,43 @@ const MovieSearchView = (props) => {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchApis().then(setResults);
-    console.log("movies awww yeaaah", results.popular);
+    setLoading(false);
   }, []);
 
-  //render popular movie data
-
-  return (
-    <div>
-      <SectionHeader label="Popular ->" />
-      <ScrollContainer>
-        <Container>
-          {results?.popular.map((item) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </Container>
-      </ScrollContainer>
-      <SectionHeader label="Upcoming ->" />
-      <ScrollContainer>
-        <Container>
-          {results?.upcoming.map((item) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </Container>
-      </ScrollContainer>
-      <SectionHeader label="Top Rated ->" />
-      <ScrollContainer>
-        <Container>
-          {results?.topRated.map((item) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </Container>
-      </ScrollContainer>
-    </div>
-  );
+  if (isLoading) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <div>
+        <SectionHeader label="Popular ->" />
+        <ScrollContainer>
+          <Container>
+            {results?.popular.map((item) => (
+              <Card key={item.id} item={item} />
+            ))}
+          </Container>
+        </ScrollContainer>
+        <SectionHeader label="Upcoming ->" />
+        <ScrollContainer>
+          <Container>
+            {results?.upcoming.map((item) => (
+              <Card key={item.id} item={item} />
+            ))}
+          </Container>
+        </ScrollContainer>
+        <SectionHeader label="Top Rated ->" />
+        <ScrollContainer>
+          <Container>
+            {results?.topRated.map((item) => (
+              <Card key={item.id} item={item} />
+            ))}
+          </Container>
+        </ScrollContainer>
+      </div>
+    );
+  }
 };
 
 export default MovieSearchView;
