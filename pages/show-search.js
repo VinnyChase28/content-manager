@@ -57,7 +57,7 @@ const ShowSearchView = (props) => {
           return [key, (await res.json()).results];
         })
       );
-      console.log(Object.fromEntries(responses));
+      console.log("Show aww yeah!", Object.fromEntries(responses));
       return Object.fromEntries(responses);
     } catch (err) {
       console.error(err);

@@ -20,7 +20,7 @@ const Container = styled.div`
   }
 `;
 
-let tmdbApiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+const tmdbApiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 //put all movie API URLs in an array
 
@@ -58,7 +58,7 @@ const MovieSearchView = (props) => {
           return [key, (await res.json()).results];
         })
       );
-      console.log(Object.fromEntries(responses));
+      console.log("Movies aww yeah!", Object.fromEntries(responses));
       return Object.fromEntries(responses);
     } catch (err) {
       console.error(err);
