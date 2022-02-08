@@ -4,16 +4,17 @@
 
 ## API's for data
 
-- TMDB (The movie Database)
-- Games TBD
+- Movies: TMDB (The movie database REST API)
+- Shows: TMDB (The movie database REST API)
+- Games: IGDB API (Twitch's game REST API)
+    - They do not support CORS headers from the client side, will need to fetch with NEXT.JS built in API to get around this.
 - Books TBD
 
 ## Front End
 
 [Next.JS](https://nextjs.org/) is an open-source development framework built on top of Node.js enabling React based web applications functionalities such as server-side rendering and generating static websites.
 
-- I will use AnimeJS for animations.
-- I will use Polished/Styled-Components combo for styling
+- I will use Styled-Components & Storybook for styling
 
 ## Project Goal
 
