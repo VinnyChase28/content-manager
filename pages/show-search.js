@@ -75,18 +75,18 @@ const ShowSearchView = (props) => {
   } else {
     return (
       <div>
-        <SectionHeader label="Popular ->" />
-        <ScrollContainer>
-          <Container>
-            {results?.popular.map((item) => (
-              <CardShows key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer>
         <SectionHeader label="Airing Today ->" />
         <ScrollContainer>
           <Container>
             {results?.airing_today.map((item) => (
+              <CardShows key={item.id} item={item} />
+            ))}
+          </Container>
+        </ScrollContainer>
+        <SectionHeader label="Popular ->" />
+        <ScrollContainer>
+          <Container>
+            {results?.popular.map((item) => (
               <CardShows key={item.id} item={item} />
             ))}
           </Container>

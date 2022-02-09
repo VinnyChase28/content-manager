@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CardGames } from "../components/Card/CardGames";
 import ScrollContainer from "react-indiana-drag-scroll";
 import SectionHeader from "../components/SectionHeader/SectionHeader";
+import { rest, result } from "lodash";
 
 const Container = styled.div`
   display: flex;
@@ -21,52 +22,64 @@ const Container = styled.div`
 `;
 
 const GameSearchView = (props) => {
-  const [data, setData] = useState(null);
+  const [popularResults, setPopularData] = useState([]);
+  const [topRatedResults, setTopRatedResults] = useState([]);
+  const [upcomingResults, setUpcomingResults] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  //todo !!!!!!!!!! apply same logic as movie-search to multiple urls of my own api
+  const urls = [
+    "api/games-popular-fetch",
+    "api/games-rated-fetch",
+    "api/games-upcoming-fetch",
+  ];
+
+  const getData = async () => {
+    const [result1, result2, result3] = await Promise.all(
+      urls.map((url) => fetch(url).then((res) => res.json()))
+    );
+    setLoading(false);
+    setPopularData(result1);
+    setTopRatedResults(result2);
+    setUpcomingResults(result3);
+  };
 
   useEffect(() => {
     setLoading(true);
-    fetch("api/games-rated-fetch")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
+    getData();
+    setLoading(false);
   }, []);
 
-  console.log("high Rated Games awww yeahhh", data);
+  console.log(popularResults, topRatedResults, upcomingResults);
 
   if (isLoading) {
     return <div>Loading...</div>;
   } else {
     return (
       <div>
-        <SectionHeader label="Popular ->" />
+        <SectionHeader label="Upcoming ->" />
         <ScrollContainer>
           <Container>
-            {data?.map((item) => (
+            {upcomingResults.map((item) => (
               <CardGames key={item.id} item={item} />
             ))}
           </Container>
         </ScrollContainer>
-        {/* <SectionHeader label="Upcoming ->" />
+        {/* <SectionHeader label="Popular ->" />
         <ScrollContainer>
           <Container>
-            {data?.upcoming.map((item) => (
-              <Card key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer>
-        <SectionHeader label="Top Rated ->" />
-        <ScrollContainer>
-          <Container>
-            {data?.map((item) => (
-              <Card key={item.id} item={item} />
+            {popularResults?.map((item) => (
+              <CardGames key={item.id} item={item} />
             ))}
           </Container>
         </ScrollContainer> */}
+        <SectionHeader label="Top Rated ->" />
+        <ScrollContainer>
+          <Container>
+            {topRatedResults.map((item) => (
+              <CardGames key={item.id} item={item} />
+            ))}
+          </Container>
+        </ScrollContainer>
       </div>
     );
   }

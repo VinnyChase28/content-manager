@@ -76,18 +76,18 @@ const MovieSearchView = (props) => {
   } else {
     return (
       <div>
-        <SectionHeader label="Popular ->" />
-        <ScrollContainer>
-          <Container>
-            {results?.popular.map((item) => (
-              <Card key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer>
         <SectionHeader label="Upcoming ->" />
         <ScrollContainer>
           <Container>
             {results?.upcoming.map((item) => (
+              <Card key={item.id} item={item} />
+            ))}
+          </Container>
+        </ScrollContainer>
+        <SectionHeader label="Popular ->" />
+        <ScrollContainer>
+          <Container>
+            {results?.popular.map((item) => (
               <Card key={item.id} item={item} />
             ))}
           </Container>

@@ -1,5 +1,3 @@
-const idgmClientId = process.env.NEXT_PUBLIC_IGDM_CLIENT_ID;
-const idgmAuthorization = process.env.NEXT_PUBLIC_IGDM_CLIENT_ID;
 
 export default async function handler(req, res) {
   var myHeaders = new Headers();
