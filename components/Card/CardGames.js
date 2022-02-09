@@ -5,7 +5,7 @@ import {
   Item,
   CardTextWrapper,
   CardTextTitle,
-} from "./CardStyles";
+} from "./CardStylesGames";
 
 export const CardGames = ({ item }) => {
   const unixTimestamp = item.first_release_date;

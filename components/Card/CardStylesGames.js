@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardWrapper = styled.div`
   display: grid;
-  grid-template-columns: 300px;
+  grid-template-columns: 350px;
   grid-template-rows: 450px 20px 90px;
   grid-template-areas: "image" "text" "stats";
   border-radius: 18px;

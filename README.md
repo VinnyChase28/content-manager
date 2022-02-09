@@ -7,8 +7,8 @@
 - Movies: TMDB (The movie database REST API)
 - Shows: TMDB (The movie database REST API)
 - Games: IGDB API (Twitch's game REST API)
-    - They do not support CORS headers from the client side, will need to fetch with NEXT.JS built in API to get around this.
-- Books TBD
+  - They do not support CORS headers from the client side, will need to fetch with NEXT.JS built in API to get around this.
+- Books: Google Books API
 
 ## Front End
 
