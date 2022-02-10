@@ -103,7 +103,7 @@ const TabGroup = () => {
         ))}
       </div>
       <p />
-      <Text> Your payment selection: {active} </Text>
+      <Text> Your selection: {active} </Text>
     </>
   );
 };
@@ -131,7 +131,7 @@ export default function Home({ isConnected }) {
             <Text>You are connected to MongoDB</Text>
           ) : (
             <Text>
-              You are NOT connected to MongoDB. Check the <code>README.md</code>
+              You are NOT (yet) connected to MongoDB. Check the <code>README.md</code>
               for instructions.
             </Text>
           )}
