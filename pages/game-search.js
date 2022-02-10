@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CardGames } from "../components/Card/CardGames";
 import ScrollContainer from "react-indiana-drag-scroll";
 import SectionHeader from "../components/SectionHeader/SectionHeader";
-import { rest, result } from "lodash";
+import FadeIn from "../components/animations/FadeIn";
 
 const Container = styled.div`
   display: flex;
@@ -56,15 +56,16 @@ const GameSearchView = (props) => {
   } else {
     return (
       <div>
-        <SectionHeader label="Upcoming ->" />
-        <ScrollContainer>
-          <Container>
-            {upcomingResults.map((item) => (
-              <CardGames key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer>
-        {/* <SectionHeader label="Popular ->" />
+        <FadeIn duration="2s">
+          <SectionHeader label="Upcoming ->" />
+          <ScrollContainer>
+            <Container>
+              {upcomingResults.map((item) => (
+                <CardGames key={item.id} item={item} />
+              ))}
+            </Container>
+          </ScrollContainer>
+          {/* <SectionHeader label="Popular ->" />
         <ScrollContainer>
           <Container>
             {popularResults?.map((item) => (
@@ -72,14 +73,15 @@ const GameSearchView = (props) => {
             ))}
           </Container>
         </ScrollContainer> */}
-        <SectionHeader label="Top Rated ->" />
-        <ScrollContainer>
-          <Container>
-            {topRatedResults.map((item) => (
-              <CardGames key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer>
+          <SectionHeader label="Top Rated ->" />
+          <ScrollContainer>
+            <Container>
+              {topRatedResults.map((item) => (
+                <CardGames key={item.id} item={item} />
+              ))}
+            </Container>
+          </ScrollContainer>
+        </FadeIn>
       </div>
     );
   }

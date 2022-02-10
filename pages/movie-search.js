@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Card } from "../components/Card/Card";
 import ScrollContainer from "react-indiana-drag-scroll";
 import SectionHeader from "../components/SectionHeader/SectionHeader";
-
+import FadeIn from "../components/animations/FadeIn";
 const Container = styled.div`
   display: flex;
   margin-bottom: 50px;
@@ -76,30 +76,32 @@ const MovieSearchView = (props) => {
   } else {
     return (
       <div>
-        <SectionHeader label="Upcoming ->" />
-        <ScrollContainer>
-          <Container>
-            {results?.upcoming.map((item) => (
-              <Card key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer>
-        <SectionHeader label="Popular ->" />
-        <ScrollContainer>
-          <Container>
-            {results?.popular.map((item) => (
-              <Card key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer>
-        <SectionHeader label="Top Rated ->" />
-        <ScrollContainer>
-          <Container>
-            {results?.topRated.map((item) => (
-              <Card key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer>
+        <FadeIn duration="1s">
+          <SectionHeader label="Upcoming ->" />
+          <ScrollContainer>
+            <Container>
+              {results?.upcoming.map((item) => (
+                <Card key={item.id} item={item} />
+              ))}
+            </Container>
+          </ScrollContainer>
+          <SectionHeader label="Popular ->" />
+          <ScrollContainer>
+            <Container>
+              {results?.popular.map((item) => (
+                <Card key={item.id} item={item} />
+              ))}
+            </Container>
+          </ScrollContainer>
+          <SectionHeader label="Top Rated ->" />
+          <ScrollContainer>
+            <Container>
+              {results?.topRated.map((item) => (
+                <Card key={item.id} item={item} />
+              ))}
+            </Container>
+          </ScrollContainer>
+        </FadeIn>
       </div>
     );
   }

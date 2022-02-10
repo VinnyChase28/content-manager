@@ -1,26 +1,21 @@
-import PropTypes from "prop-types";
+import styled from "styled-components";
 
-function Button({ label, backgroundColor = "red", size = "md", handleClick }) {
-  let scale = 1;
-  if (size === "sm") scale = 0.75;
-  if (size === "lg") scale = 1.5;
-  const style = {
-    backgroundColor,
-    padding: `${scale * 0.5}rem ${scale * 1}rem`,
-    border: "none",
-  };
+const Button = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${(props) => (props.primary ? "palevioletred" : "white")};
+  color: ${(props) => (props.primary ? "white" : "palevioletred")};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+export const ButtonPrimary = (props) => {
   return (
-    <button onClick={handleClick} style={style}>
-      {label}
-    </button>
+    <div>
+      <Button>{props.text}</Button>
+    </div>
   );
-}
-
-Button.propTypes = {
-  label: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  size: PropTypes.oneOf(["sm", "md", "lg"]),
-  handleClick: PropTypes.func,
 };
-
-export default Button;

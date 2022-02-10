@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 function SectionHeader({ label }) {
   const style = {
-    color: "#FF1493",
+    color: "black",
     padding: "20px",
     marginLeft: "100px",
   };

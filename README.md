@@ -8,7 +8,6 @@
 - Shows: TMDB (The movie database REST API)
 - Games: IGDB API (Twitch's game REST API)
   - They do not support CORS headers from the client side, will need to fetch with NEXT.JS built in API to get around this.
-- Books: Google Books API
 
 ## Front End
 
@@ -18,4 +17,4 @@
 
 ## Project Goal
 
-This project is a content management system that will allow you to consolidate all of your movies, shows, games and books in one place. You can add to your consumed content list, and create watchlists to enjoy later.
+This project is a content management system that will allow you to consolidate all of your movies, shows, and games in one place. You can add to your consumed content list, and create watchlists/playlists to enjoy later.
