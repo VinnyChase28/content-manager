@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { CardShows } from "../components/Card/CardShows";
 import ScrollContainer from "react-indiana-drag-scroll";
-import SectionHeader from "../components/SectionHeader/SectionHeader";
+import {
+  SectionHeaderPopular,
+  SectionHeaderRated,
+  SectionHeaderUpcoming,
+  SectionHeaderToday,
+} from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
 const Container = styled.div`
   display: flex;
@@ -76,7 +81,7 @@ const ShowSearchView = (props) => {
     return (
       <div>
         <FadeIn duration="1s">
-          <SectionHeader label="Airing Today ->" />
+          <SectionHeaderToday label="Airing Today" />
           <ScrollContainer>
             <Container>
               {results?.airing_today.map((item) => (
@@ -84,7 +89,7 @@ const ShowSearchView = (props) => {
               ))}
             </Container>
           </ScrollContainer>
-          <SectionHeader label="Popular ->" />
+          <SectionHeaderPopular label="Popular" />
           <ScrollContainer>
             <Container>
               {results?.popular.map((item) => (
@@ -92,7 +97,7 @@ const ShowSearchView = (props) => {
               ))}
             </Container>
           </ScrollContainer>
-          <SectionHeader label="Top Rated ->" />
+          <SectionHeaderRated label="Top Rated" />
           <ScrollContainer>
             <Container>
               {results?.topRated.map((item) => (

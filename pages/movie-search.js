@@ -2,8 +2,15 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Card } from "../components/Card/Card";
 import ScrollContainer from "react-indiana-drag-scroll";
-import SectionHeader from "../components/SectionHeader/SectionHeader";
+import {
+  SectionHeaderPopular,
+  SectionHeaderRated,
+  SectionHeaderUpcoming,
+  SectionHeaderToday,
+} from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
+import { MoviePlay, Tv, Game } from "styled-icons/boxicons-regular";
+
 const Container = styled.div`
   display: flex;
   margin-bottom: 50px;
@@ -77,7 +84,7 @@ const MovieSearchView = (props) => {
     return (
       <div>
         <FadeIn duration="1s">
-          <SectionHeader label="Upcoming ->" />
+          <SectionHeaderUpcoming label="Upcoming" />
           <ScrollContainer>
             <Container>
               {results?.upcoming.map((item) => (
@@ -85,7 +92,7 @@ const MovieSearchView = (props) => {
               ))}
             </Container>
           </ScrollContainer>
-          <SectionHeader label="Popular ->" />
+          <SectionHeaderPopular label="Popular" />
           <ScrollContainer>
             <Container>
               {results?.popular.map((item) => (
@@ -93,7 +100,7 @@ const MovieSearchView = (props) => {
               ))}
             </Container>
           </ScrollContainer>
-          <SectionHeader label="Top Rated ->" />
+          <SectionHeaderRated label="Top Rated" />
           <ScrollContainer>
             <Container>
               {results?.topRated.map((item) => (

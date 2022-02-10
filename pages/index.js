@@ -19,62 +19,6 @@ const Heading = styled.h1`
   margin-top: 100px;
 `;
 
-const theme = {
-  blue: {
-    default: "#3f51b5",
-    hover: "#283593",
-  },
-  pink: {
-    default: "#e91e63",
-    hover: "#ad1457",
-  },
-};
-
-const Button = styled.button`
-  background-color: ${(props) => theme[props.theme].default};
-  color: white;
-  padding: 5px 15px;
-  border-radius: 5px;
-  outline: 0;
-  text-transform: uppercase;
-  margin: 10px 0px;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px lightgray;
-  transition: ease background-color 250ms;
-  &:hover {
-    background-color: ${(props) => theme[props.theme].hover};
-  }
-  &:disabled {
-    cursor: default;
-    opacity: 0.7;
-  }
-`;
-
-Button.defaultProps = {
-  theme: "blue",
-};
-
-function clickMe() {
-  alert("You clicked me!");
-}
-
-const Tab = styled.button`
-  padding: 10px 30px;
-  cursor: pointer;
-  opacity: 0.6;
-  background: white;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid transparent;
-  transition: ease border-bottom 250ms;
-  ${({ active }) =>
-    active &&
-    `
-    border-bottom: 2px solid black;
-    opacity: 1;
-  `}
-`;
-
 const Text = styled.text`
   font-size: 15px;
 `;
@@ -85,9 +29,16 @@ const Spacer = styled.div`
   margin-right: 0px;
 `;
 
-const types = ["Movies", "Shows", "Games"];
+const IconRow = styled.div`
+  flex-direction: row;
+`;
 
-const TabGroup = () => {
+const types = [
+  <MoviePlay style={{ height: 100, width: 100 }} />,
+  <Tv style={{ height: 100, width: 100 }} />,
+  <Game style={{ height: 100, width: 100 }} />,
+];
+const IconGroup = () => {
   const [active, setActive] = useState(types[0]);
   return (
     <>
@@ -122,8 +73,13 @@ export default function Home({ isConnected }) {
           <TextAnimation />
           <Spacer></Spacer>
         </Heading>
+
         <FadeIn duration="2s" delay="2.5s">
-          <TabGroup />
+          <IconRow>
+            <MoviePlay style={{ height: 100, width: 100 }} />
+            <Tv style={{ height: 100, width: 100 }} />
+            <Game style={{ height: 100, width: 100 }} />
+          </IconRow>
         </FadeIn>
 
         <p>
@@ -131,7 +87,8 @@ export default function Home({ isConnected }) {
             <Text>You are connected to MongoDB</Text>
           ) : (
             <Text>
-              You are NOT (yet) connected to MongoDB. Check the <code>README.md</code>
+              You are NOT (yet) connected to MongoDB. Check the{" "}
+              <code>README.md</code>
               for instructions.
             </Text>
           )}

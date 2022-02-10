@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { CardGames } from "../components/Card/CardGames";
 import ScrollContainer from "react-indiana-drag-scroll";
-import SectionHeader from "../components/SectionHeader/SectionHeader";
+import {
+  SectionHeaderPopular,
+  SectionHeaderRated,
+  SectionHeaderUpcoming,
+  SectionHeaderToday,
+} from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
 
 const Container = styled.div`
@@ -57,7 +62,7 @@ const GameSearchView = (props) => {
     return (
       <div>
         <FadeIn duration="2s">
-          <SectionHeader label="Upcoming ->" />
+          <SectionHeaderUpcoming label="Upcoming" />
           <ScrollContainer>
             <Container>
               {upcomingResults.map((item) => (
@@ -73,7 +78,7 @@ const GameSearchView = (props) => {
             ))}
           </Container>
         </ScrollContainer> */}
-          <SectionHeader label="Top Rated ->" />
+          <SectionHeaderRated label="Top Rated" />
           <ScrollContainer>
             <Container>
               {topRatedResults.map((item) => (
