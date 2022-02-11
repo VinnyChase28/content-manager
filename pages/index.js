@@ -5,7 +5,8 @@ import styled from "styled-components";
 import Layout from "../components/Layout";
 import TextAnimation from "../components/animations/TextAnimation";
 import FadeIn from "../components/animations/FadeIn";
-import { MoviePlay, Tv, Game } from "styled-icons/boxicons-regular";
+import { Content } from "../components/Tabs/Tab";
+import { Button } from "../components/Button/Button";
 
 const Hero = styled.div`
   margin: auto;
@@ -20,7 +21,7 @@ const Heading = styled.h1`
 `;
 
 const Text = styled.text`
-  font-size: 15px;
+  font-size: 20px;
 `;
 
 const Spacer = styled.div`
@@ -29,37 +30,18 @@ const Spacer = styled.div`
   margin-right: 0px;
 `;
 
-const IconRow = styled.div`
+const Row = styled.section`
   flex-direction: row;
 `;
 
-const types = [
-  <MoviePlay style={{ height: 100, width: 100 }} />,
-  <Tv style={{ height: 100, width: 100 }} />,
-  <Game style={{ height: 100, width: 100 }} />,
-];
-const IconGroup = () => {
-  const [active, setActive] = useState(types[0]);
-  return (
-    <>
-      <div>
-        {types.map((type) => (
-          <Tab
-            key={type}
-            active={active === type}
-            onClick={() => setActive(type)}
-          >
-            {type}
-          </Tab>
-        ))}
-      </div>
-      <p />
-      <Text> Your selection: {active} </Text>
-    </>
-  );
-};
-
 export default function Home({ isConnected }) {
+  const [active, setActive] = useState(null);
+  const handleClick = (e) => {
+    const index = parseInt(e.target.id, 0);
+    if (index !== active) {
+      setActive(index);
+    }
+  };
   return (
     <>
       <Head>
@@ -75,14 +57,32 @@ export default function Home({ isConnected }) {
         </Heading>
 
         <FadeIn duration="2s" delay="2.5s">
-          <IconRow>
-            <MoviePlay style={{ height: 100, width: 100 }} />
-            <Tv style={{ height: 100, width: 100 }} />
-            <Game style={{ height: 100, width: 100 }} />
-          </IconRow>
-        </FadeIn>
+          <Row>
+            <Button active={active === 0} id={0} onClick={handleClick}>
+              Movies
+            </Button>
 
-        <p>
+            <Button active={active === 1} id={1} onClick={handleClick}>
+              Shows
+            </Button>
+            <Button active={active === 2} id={2} onClick={handleClick}>
+              Games
+            </Button>
+          </Row>
+        </FadeIn>
+        <>
+          <Content active={active === 0}>
+            <h1>Content 1</h1>
+          </Content>
+          <Content active={active === 1}>
+            <h1>Content 2</h1>
+          </Content>
+          <Content active={active === 2}>
+            <h1>Content 3</h1>
+          </Content>
+        </>
+
+        {/* <Text>
           {isConnected ? (
             <Text>You are connected to MongoDB</Text>
           ) : (
@@ -92,11 +92,13 @@ export default function Home({ isConnected }) {
               for instructions.
             </Text>
           )}
-        </p>
+        </Text> */}
       </Hero>
     </>
   );
 }
+
+//mogodb connection
 
 // export async function getServerSideProps(context) {
 //   try {

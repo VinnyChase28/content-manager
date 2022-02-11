@@ -6,6 +6,7 @@ const HeaderStyle = styled.text`
   padding: 20px;
   margin-left: 100px;
   font-size: 2em;
+  font-weight: bold;
 `;
 
 const Wrapper = styled.section`
