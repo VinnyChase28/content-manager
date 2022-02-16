@@ -4,8 +4,12 @@ export default async function handler(req, res) {
   myHeaders.append("Authorization", "Bearer 7anr9v4n8nqac41mqgisd7r4trrjgx");
   myHeaders.append("Content-Type", "text/plain");
 
+  let search = JSON.stringify(req.body.searchTerm);
+
   var raw =
-    'fields name, first_release_date, cover.image_id, summary, storyline, total_rating; search "Halo";';
+    "fields name, first_release_date, cover.image_id, summary, storyline, total_rating; search " +
+    search +
+    ";";
 
   var requestOptions = {
     method: "POST",

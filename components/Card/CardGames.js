@@ -12,7 +12,7 @@ export const CardGames = ({ item }) => {
   const milliseconds = unixTimestamp * 1000; // 1575909015000
   const dateObject = new Date(milliseconds);
   const humanDateFormat = dateObject.toDateString();
-  let idgmImgId = item.cover.image_id;
+  let idgmImgId = item.cover?.image_id || null;
   let idgmImgURL =
     "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/" +
     idgmImgId +

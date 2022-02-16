@@ -62,7 +62,6 @@ export default function Home({ isConnected }) {
   };
 
   useEffect(() => {
-    console.log(active, "- Has changed");
     setSearchResults([]);
     setSearchTerm("");
   }, [active]); // <-- here put the parameter to listen
@@ -79,8 +78,9 @@ export default function Home({ isConnected }) {
   //set search term
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
-    console.log(searchTerm);
   };
+
+  //search for movies and games
 
   const performSearch = () => {
     fetch(searchUrl)
@@ -94,28 +94,16 @@ export default function Home({ isConnected }) {
       });
   };
 
-  //get games with parameters
+  //search for games
 
   const performSearchGames = () => {
-    var axios = require("axios");
-    var data =
-      'fields name, first_release_date, cover.image_id, summary, storyline, total_rating; search "Halo";';
-
-    var config = {
-      method: "post",
-      url: "https://api.igdb.com/v4/games",
-      headers: {
-        "Client-ID": "yhug9qamfl9kkha9zakglsbrgbb5dk",
-        Authorization: "Bearer 7anr9v4n8nqac41mqgisd7r4trrjgx",
-        "Content-Type": "text/plain",
-      },
-      data: data,
-    };
-
-    axios(config)
+    axios
+      .post("api/games-search", {
+        searchTerm: searchTerm,
+      })
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        setSearchResults([response.data]);
+        console.log(response.data);
+        setSearchResults(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -209,7 +197,7 @@ export default function Home({ isConnected }) {
             <Input
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
-                  if (searchTerm !== "") {
+                  if (searchTerm !== "" && active === 2) {
                     performSearchGames();
                   } else {
                     alert("Enter a search term dum dum");
