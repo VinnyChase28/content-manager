@@ -14,6 +14,11 @@ export const Button = styled.button`
   transition: background-color 0.5s ease-out 100ms;
     cursor: pointer;
   }
+  &:active {
+    background: #FFB6C1;
+  transition: background-color 0.5s ease-out 100ms;
+    cursor: pointer;
+  }
   
   }
 `;
