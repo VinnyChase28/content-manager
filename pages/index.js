@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React, { useState, useEffect, useRef } from "react";
-import clientPromise from "../lib/mongodb";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import TextAnimation from "../components/animations/TextAnimation";
@@ -58,7 +57,6 @@ export default function Home({ isConnected }) {
       "https://api.themoviedb.org/3/search/tv?api_key=2ada9f8403fa9b543e95d8b22fdfef55&language=en-US&query=" +
       searchTerm +
       "&page=1&include_adult=false",
-    gameUrl: "",
   };
 
   useEffect(() => {
@@ -71,8 +69,6 @@ export default function Home({ isConnected }) {
     searchUrl = searchUrls.movieUrl;
   } else if (active == 1) {
     searchUrl = searchUrls.showUrl;
-  } else if (active == 2) {
-    searchUrl = searchUrls.gameUrl;
   }
 
   //set search term
@@ -217,40 +213,7 @@ export default function Home({ isConnected }) {
             </Cards>
           </Content>
         </>
-
-        {/* <Text>
-          {isConnected ? (
-            <Text>You are connected to MongoDB</Text>
-          ) : (
-            <Text>
-              You are NOT (yet) connected to MongoDB. Check the{" "}
-              <code>README.md</code>
-              for instructions.
-            </Text>
-          )}
-        </Text> */}
       </Hero>
     </>
   );
 }
-
-//mogodb connection
-
-// export async function getServerSideProps(context) {
-//   try {
-//     // client.db() will be the default database passed in the MONGODB_URI
-//     // You can change the database by calling the client.db() function and specifying a database like:
-//     // const db = client.db("myDatabase");
-//     // Then you can execute queries against your database like so:
-//     // db.find({}) or any of the MongoDB Node Driver commands
-//     await clientPromise;
-//     return {
-//       props: { isConnected: true },
-//     };
-//   } catch (e) {
-//     console.error(e);
-//     return {
-//       props: { isConnected: false },
-//     };
-//   }
-// }

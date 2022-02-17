@@ -78,13 +78,13 @@ const Navbar = (props) => {
         <Link href="/game-search" passHref>
           <StyledLink>Games</StyledLink>
         </Link>
-        <Link href="/my-lists" passHref>
+        <Link href="/profile" passHref>
           <StyledLink>My Content</StyledLink>
         </Link>
         <Link href="/my-lists" passHref>
           <StyledLink>Sign Up</StyledLink>
         </Link>
-        <Link href="/my-lists" passHref>
+        <Link href="/sign-in" passHref>
           <StyledLink>Sign In</StyledLink>
         </Link>
       </div>
