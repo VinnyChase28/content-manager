@@ -1,37 +1,53 @@
 /* pages/sign-in.js */
 import { useState } from "react";
 import { supabase } from "../client";
+import { useRouter } from "next/router";
+import useLogin from "../hooks/useLogin";
 
-export default function SignIn() {
+export default function Login() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  async function signIn() {
-    const { error, data } = await supabase.auth.signIn({
-      email,
-    });
-    if (error) {
-      console.log({ error });
-    } else {
-      setSubmitted(true);
-    }
+  const [password, setPassword] = useState("");
+
+  const loginMutation = useLogin({ email, password });
+
+  if (loginMutation.isSuccess) {
+    router.push("/");
   }
-  if (submitted) {
-    return (
-      <div>
-        <h1>Please check your email to sign in</h1>
-      </div>
-    );
+
+  {
+    loginMutation.isError && <p>{loginMutation.error.message}</p>;
   }
+
   return (
     <div>
-      <main>
-        <h1>Sign In</h1>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ margin: 10 }}
-        />
-        <button onClick={() => signIn()}>Sign In</button>
-      </main>
+      <div style={{ maxWidth: "420px", margin: "96px auto" }}>
+        <div>
+          <p>Email</p>
+          <input type="text" onChange={(e) => setEmail(e.target.value)} />
+        </div>
+        <div className="my-8 w-full lg:w-auto px-4">
+          <p>Password</p>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <button
+            className="bg-blue-500 text-white px-8 py-2 rounded w-full"
+            onClick={() => loginMutation.mutate()}
+          >
+            {loginMutation.isLoading ? (
+              <span>
+                <p>Loading</p>
+              </span>
+            ) : (
+              <span>Login</span>
+            )}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

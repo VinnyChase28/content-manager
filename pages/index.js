@@ -1,7 +1,6 @@
 import Head from "next/head";
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import Layout from "../components/Layout";
 import TextAnimation from "../components/animations/TextAnimation";
 import FadeIn from "../components/animations/FadeIn";
 import { Content } from "../components/Tabs/Tab";

@@ -17,10 +17,6 @@ export const Item = styled.div`
   justify-content: center;
   padding: 0.5rem;
   margin-top: 10px;
-  transition: transform 0.2s;
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 export const CardImage = styled.div`
