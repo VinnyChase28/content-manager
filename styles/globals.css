@@ -83,3 +83,7 @@ a {
 .menu-trigger img {
   border-radius: 90px;
 }
+
+.a-hover:hover {
+  cursor: pointer;
+}

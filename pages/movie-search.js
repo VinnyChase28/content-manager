@@ -10,6 +10,7 @@ import {
 } from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
 import { MoviePlay, Tv, Game } from "styled-icons/boxicons-regular";
+import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +27,16 @@ const Container = styled.div`
     cursor: -webkit-grabbing;
   }
 `;
+
+const StyledModal = Modal.styled`
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  opacity: ${(props) => props.opacity};
+  transition : all 0.3s ease-in-out;`;
 
 const tmdbApiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
@@ -47,6 +58,29 @@ const urls = {
 };
 
 const MovieSearchView = (props) => {
+  //test
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [opacity, setOpacity] = useState(0);
+
+  function toggleModal(e) {
+    setOpacity(0);
+    setIsOpen(!isOpen);
+  }
+
+  function afterOpen() {
+    setTimeout(() => {
+      setOpacity(1);
+    }, 100);
+  }
+
+  function beforeClose() {
+    return new Promise((resolve) => {
+      setOpacity(0);
+      setTimeout(resolve, 300);
+    });
+  }
+
   // const [movieData, setMovieData] = useState(null);
   const [results, setResults] = useState({
     popular: [],
