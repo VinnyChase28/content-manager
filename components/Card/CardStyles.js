@@ -10,6 +10,7 @@ export const CardWrapper = styled.div`
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   text-align: center;
   margin-top: 10px;
+  position: relative;
 `;
 
 export const Item = styled.div`
@@ -26,6 +27,33 @@ export const CardImage = styled.div`
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-size: cover;
+`;
+export const DropdownContent = styled.div`
+  display: none;
+`;
+
+export const Button = styled.button`
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 5px;
+  top: 5px;
+  background-color: white;
+  opacity: 0.5;
+  filter: alpha(opacity=90);
+  border-radius: 90%;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  &:hover ${DropdownContent} {
+    display: show;
+  }
+`;
+
+export const Arrow = styled.i`
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
 `;
 
 export const CardTextWrapper = styled.div`

@@ -4,7 +4,7 @@ import { supabase } from "../client";
 const createUser = async (userData) => {
   // Check if username exists
   const { data: userWithUsername } = await supabase
-    .from("users")
+    .from("profiles")
     .select("*")
     .eq("username", userData.username)
     .single();
@@ -29,7 +29,7 @@ export default function useCreateUser(userData) {
     onSuccess: async (user) => {
       console.log(user);
       const { data: insertData, error: insertError } = await supabase
-        .from("users")
+        .from("profiles")
         .insert({
           name: userData.name,
           username: userData.username,
