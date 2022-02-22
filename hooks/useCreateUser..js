@@ -27,7 +27,6 @@ const createUser = async (userData) => {
 export default function useCreateUser(userData) {
   return useMutation(() => createUser(userData), {
     onSuccess: async (user) => {
-      console.log(user);
       const { data: insertData, error: insertError } = await supabase
         .from("profiles")
         .insert({

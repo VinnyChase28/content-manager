@@ -14,6 +14,8 @@ import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 import styled from "styled-components";
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import FadeIn from "../animations/FadeIn";
+import addFavoriteMovie from "../../hooks/content-hooks/useAddFavoriteMovie";
+import addWatchlistMovie from "../../hooks/content-hooks/useAddWatchlistMovie";
 
 const StyledModal = Modal.styled`
   width: 1000px;
@@ -28,7 +30,6 @@ const StyledModal = Modal.styled`
   background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), linear-gradient(to bottom, rgb(8, 8, 8), rgb(32, 32, 32));
   background-size: 10px 10px, 10px 10px, 10px 5px;
   background-position: 0px 0px, 5px 5px, 0px 0px;
- background-blend-mode: normal, lighten, soft-light;
   opacity: ${(props) => props.opacity};
   transition : all 0.3s ease-in-out;`;
 
@@ -58,7 +59,7 @@ const Img = styled.img`
 `;
 
 const Description = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
   font-family: "Montserrat", sans-serif;
 `;
@@ -69,11 +70,12 @@ Img.defaultProps = {
 
 const ModalButton = styled.button`
   /* Adapt the colors based on primary prop */
+  background: white;
   border-radius: 3px;
   max-width: 250px;
   border-bottom: 2px solid black;
   border-right: 2px solid black;
-  
+  border-radius: 10px;
   color: black;
   margin: 1em;
   padding: 1em 3em;
@@ -96,10 +98,40 @@ const ModalButton = styled.button`
 export const Card = ({ item }) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive);
-
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
+
+  const addFavMovie = addWatchlistMovie(
+    {
+      movie_id: item.id,
+      original_title: item.original_title,
+      overview: item.overview,
+      poster_path: item.poster_path,
+      release_date: item.release_date,
+      popularity: item.popularity,
+      vote_average: item.vote_average,
+      vote_count: item.vote_count,
+      genre_ids: item.genre_ids,
+    },
+    []
+  );
+
+  const addWatchMovie = addWatchlistMovie(
+    {
+      movie_id: item.id,
+      original_title: item.original_title,
+      overview: item.overview,
+      poster_path: item.poster_path,
+      release_date: item.release_date,
+      popularity: item.popularity,
+      vote_average: item.vote_average,
+      vote_count: item.vote_count,
+      genre_ids: item.genre_ids,
+    },
+    []
+  );
+
+  const onClick = () => setIsActive(!isActive);
 
   function toggleModal(e) {
     setOpacity(0);
@@ -118,10 +150,6 @@ export const Card = ({ item }) => {
       setTimeout(resolve, 300);
     });
   }
-
-  useEffect(() => {
-    console.log(isActive);
-  }, [isActive]); // <-- here put the parameter to listen
 
   return (
     <Item key={item.id}>
@@ -142,10 +170,14 @@ export const Card = ({ item }) => {
           >
             <ul>
               <li>
-                <a href="/messages">Favorite</a>
+                <a className="a-hover" onClick={() => addFavMovie.mutate()}>
+                  Favorite
+                </a>
               </li>
               <li>
-                <a href="/trips">Add to Watchlist</a>
+                <a className="a-hover" onClick={() => addWatchMovie.mutate()}>
+                  Add to Watchlist
+                </a>
               </li>
               <li>
                 <div>
@@ -167,8 +199,10 @@ export const Card = ({ item }) => {
                         <Col>
                           <Description>{item.overview}</Description>
                           <Row>
-                            <ModalButton>Favorite</ModalButton>
-                            <ModalButton>Add to Watchlist</ModalButton>
+                            <ModalButton onClick={() => addMovie.mutate()}>
+                              + Favorite
+                            </ModalButton>
+                            <ModalButton>+ Watchlist</ModalButton>
                           </Row>
                         </Col>
                         <Img
