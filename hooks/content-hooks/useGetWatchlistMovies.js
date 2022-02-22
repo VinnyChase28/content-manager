@@ -1,9 +1,9 @@
 import { useQuery } from "react-query";
 import { supabase } from "../../client";
 
-const fetchFavoriteMovies = async (user_id) => {
+const fetchWatchlistMovies = async (user_id) => {
   const { data, error } = await supabase
-    .from("favorite_movies")
+    .from("watchlist_movies")
     .select()
     .eq("user_id", user_id);
 
@@ -14,7 +14,7 @@ const fetchFavoriteMovies = async (user_id) => {
   return data;
 };
 
-export default function getFavoriteMovies() {
+export default function getWatchlistMovies() {
   const user = supabase.auth.user();
-  return useQuery("favorite_movies", () => fetchFavoriteMovies(user?.id));
+  return useQuery("watchlist_movies", () => fetchWatchlistMovies(user?.id));
 }

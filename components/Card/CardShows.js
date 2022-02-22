@@ -222,7 +222,7 @@ export const CardShows = ({ item }) => {
           </nav>
           <CardTextDate>{item.first_air_date}</CardTextDate>
 
-          <CardTextTitle>{item.name}</CardTextTitle>
+          <CardTextTitle>{item.original_name}</CardTextTitle>
         </CardTextWrapper>
       </CardWrapper>
     </Item>

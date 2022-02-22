@@ -8,7 +8,6 @@ import getFavoriteShows from "../hooks/content-hooks/useGetFavoriteShows";
 import getWatchlistMovies from "../hooks/content-hooks/useGetWatchlistMovies";
 import getWatchlistShows from "../hooks/content-hooks/useGetWatchlistShows";
 import { Card } from "../components/Card/Card";
-import { CardShows } from "../components/Card/CardShows";
 
 const Cards = styled.div`
   display: flex;
@@ -20,10 +19,11 @@ const Cards = styled.div`
 export default function Profile() {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
-  const { data: favMovieData, isSuccess1, isLoading1 } = getFavoriteMovies();
-  const { data: favShowData, isSuccess2, isLoading2 } = getFavoriteShows();
-  const { data: watchMovieData, isSuccess3, isLoading3 } = getWatchlistMovies();
-  const { data: watchShowData, isSuccess4, isLoading4 } = getWatchlistShows();
+  const { favMovieData, isSuccess1, isLoading1 } = getFavoriteMovies();
+  const { favShowData, isSuccess2, isLoading2 } = getFavoriteShows();
+  const { watchMovieData, isSuccess3, isLoading3 } = getWatchlistMovies();
+  const { watchShowData, isSuccess4, isLoading4 } = getWatchlistShows();
+  console.log(favMovieData, favShowData, watchMovieData, watchShowData);
   const router = useRouter();
   useEffect(() => {
     fetchUser();
@@ -47,18 +47,6 @@ export default function Profile() {
     <div>
       <h2>Hello, {user.email}</h2>
       <p>User ID: {user.id}</p>
-      <h1>Movie Watchlist</h1>
-      <Cards>
-        {watchMovieData?.map((item) => (
-          <Card key={item.id} item={item} />
-        ))}
-      </Cards>
-      <h1>Show Watchlist</h1>
-      <Cards>
-        {watchShowData?.map((item) => (
-          <CardShows key={item.id} item={item} />
-        ))}
-      </Cards>
       <h1>Favorite Movies</h1>
       <Cards>
         {favMovieData?.map((item) => (
@@ -68,7 +56,7 @@ export default function Profile() {
       <h1>Favorite Shows</h1>
       <Cards>
         {favShowData?.map((item) => (
-          <CardShows key={item.id} item={item} />
+          <Card key={item.id} item={item} />
         ))}
       </Cards>
       <button onClick={signOut}>Sign Out</button>
