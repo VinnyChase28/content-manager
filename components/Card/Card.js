@@ -101,7 +101,7 @@ export const Card = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 
-  const addFavMovie = addWatchlistMovie(
+  const addFavMovie = addFavoriteMovie(
     {
       movie_id: item.id,
       original_title: item.original_title,
