@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { supabase } from "../../client";
+import { supabase } from "../../../client";
 
 const fetchFavoriteMovies = async (user_id) => {
   const { data: favMovieData, error } = await supabase

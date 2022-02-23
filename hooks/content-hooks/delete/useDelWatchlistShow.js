@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { supabase } from "../../client";
+import { supabase } from "../../../client";
 
 const delWatchMovie = async (movie, user_id) => {
   const { data, error } = await supabase

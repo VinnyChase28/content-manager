@@ -10,6 +10,7 @@ export const CardWrapper = styled.div`
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   text-align: center;
   margin-top: 10px;
+  position: relative;
 `;
 
 export const Item = styled.div`

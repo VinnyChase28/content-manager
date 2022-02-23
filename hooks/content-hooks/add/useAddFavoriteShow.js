@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { supabase } from "../../client";
+import { supabase } from "../../../client";
 
 const addFavShow = async (show, user_id) => {
   const { data, error } = await supabase.from("favorite_shows").upsert({

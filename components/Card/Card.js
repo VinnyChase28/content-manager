@@ -14,8 +14,8 @@ import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 import styled from "styled-components";
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import FadeIn from "../animations/FadeIn";
-import addFavoriteMovie from "../../hooks/content-hooks/useAddFavoriteMovie";
-import addWatchlistMovie from "../../hooks/content-hooks/useAddWatchlistMovie";
+import addFavoriteMovie from "../../hooks/content-hooks/add/useAddFavoriteMovie";
+import addWatchlistMovie from "../../hooks/content-hooks/add/useAddWatchlistMovie";
 
 const StyledModal = Modal.styled`
   width: 1000px;
@@ -158,7 +158,7 @@ export const Card = ({ item }) => {
           <Arrow />
         </Button>
 
-        <DropdownContent>Test</DropdownContent>
+    
         <CardImage
           background={"https://image.tmdb.org/t/p/w500" + item.poster_path}
         />

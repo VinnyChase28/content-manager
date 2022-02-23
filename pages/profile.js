@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { supabase } from "../client";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import getFavoriteMovies from "../hooks/content-hooks/useGetFavoriteMovies";
-import getFavoriteShows from "../hooks/content-hooks/useGetFavoriteShows";
-import getWatchlistMovies from "../hooks/content-hooks/useGetWatchlistMovies";
-import getWatchlistShows from "../hooks/content-hooks/useGetWatchlistShows";
+import getFavoriteMovies from "../hooks/content-hooks/get/useGetFavoriteMovies";
+import getFavoriteShows from "../hooks/content-hooks/get/useGetFavoriteShows";
+import getWatchlistMovies from "../hooks/content-hooks/get/useGetWatchlistMovies";
+import getWatchlistShows from "../hooks/content-hooks/get/useGetWatchlistShows";
 import { Card } from "../components/Card/Card";
 import { CardShows } from "../components/Card/CardShows";
 import { CardProfile } from "../components/Card/CardProfile";
@@ -26,6 +26,7 @@ export default function Profile() {
   const { data: favShowData, isSuccess2, isLoading2 } = getFavoriteShows();
   const { data: watchMovieData, isSuccess3, isLoading3 } = getWatchlistMovies();
   const { data: watchShowData, isSuccess4, isLoading4 } = getWatchlistShows();
+
   const router = useRouter();
   useEffect(() => {
     fetchUser();
@@ -73,7 +74,21 @@ export default function Profile() {
           <CardProfileShows key={item.id} item={item} />
         ))}
       </Cards>
+      <h1>Favorite Games</h1>
+      <Cards>
+        {favShowData?.map((item) => (
+          <CardProfileShows key={item.id} item={item} />
+        ))}
+      </Cards>
+      <h1>Game Watchlist</h1>
+      <Cards>
+        {favShowData?.map((item) => (
+          <CardProfileShows key={item.id} item={item} />
+        ))}
+      </Cards>
       <button onClick={signOut}>Sign Out</button>
     </div>
   );
 }
+
+

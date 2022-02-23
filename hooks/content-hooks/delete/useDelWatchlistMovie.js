@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from "react-query";
-import { supabase } from "../../client";
+import { supabase } from "../../../client";
 
-const delFavMovie = async (movie, user_id) => {
+const delWatchMovie = async (movie, user_id) => {
   const { data, error } = await supabase
-    .from("favorite_movies")
+    .from("watchlist_movies")
     .delete()
     .match({ movie_id: movie.movie_id, user_id: user_id });
 
@@ -13,12 +13,12 @@ const delFavMovie = async (movie, user_id) => {
   return data;
 };
 
-export default function delFavoriteMovie(movie) {
+export default function delWatchlistMovie(movie) {
   const queryClient = useQueryClient();
   const user = supabase?.auth.user();
-  return useMutation(() => delFavMovie(movie, user?.id), {
+  return useMutation(() => delWatchMovie(movie, user?.id), {
     onSuccess: () => {
-      queryClient.refetchQueries("favorite_movies");
+      queryClient.refetchQueries("watchlist_movies");
     },
   });
 }

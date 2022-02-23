@@ -14,8 +14,8 @@ import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 import styled from "styled-components";
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import FadeIn from "../animations/FadeIn";
-import delFavoriteMovie from "../../hooks/content-hooks/useDelFavoriteMovie";
-import delWatchlistMovie from "../../hooks/content-hooks/useDelWatchlistMovie";
+import delFavoriteMovie from "../../hooks/content-hooks/delete/useDelFavoriteMovie";
+import delWatchlistMovie from "../../hooks/content-hooks/delete/useDelWatchlistMovie";
 
 const StyledModal = Modal.styled`
   width: 1000px;

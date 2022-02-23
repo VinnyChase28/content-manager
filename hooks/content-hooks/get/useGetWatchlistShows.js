@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { supabase } from "../../client";
+import { supabase } from "../../../client";
 
 const fetchWatchlistShows = async (user_id) => {
   const { data, error } = await supabase

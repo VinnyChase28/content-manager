@@ -14,8 +14,8 @@ import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 import styled from "styled-components";
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import FadeIn from "../animations/FadeIn";
-import delFavoriteShow from "../../hooks/content-hooks/useDelFavoriteShow";
-import delWatchlistShow from "../../hooks/content-hooks/useDelWatchlistShow";
+import delFavoriteShow from "../../hooks/content-hooks/delete/useDelFavoriteShow";
+import delWatchlistShow from "../../hooks/content-hooks/delete/useDelWatchlistShow";
 
 const StyledModal = Modal.styled`
   width: 1000px;
@@ -96,7 +96,6 @@ const ModalButton = styled.button`
 `;
 
 export const CardProfileShows = ({ item }) => {
-  console.log("I loaded");
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
   const [isOpen, setIsOpen] = useState(false);
@@ -148,7 +147,6 @@ export const CardProfileShows = ({ item }) => {
           <Arrow />
         </Button>
 
-        <DropdownContent>Test</DropdownContent>
         <CardImage
           background={"https://image.tmdb.org/t/p/w500" + item.poster_path}
         />
@@ -179,15 +177,14 @@ export const CardProfileShows = ({ item }) => {
                       opacity={opacity}
                       backgroundProps={{ opacity }}
                     >
-                      <Title>{item.name}</Title>
+                      <Title>{item.original_name}</Title>
                       <Row>
                         <Col>
                           <Description>{item.overview}</Description>
                           <Row>
-                            <ModalButton onClick={() => addMovie.mutate()}>
-                              + Favorite
+                            <ModalButton onClick={() => deleteShows()}>
+                              Delete
                             </ModalButton>
-                            <ModalButton>+ Watchlist</ModalButton>
                           </Row>
                         </Col>
                         <Img
@@ -205,7 +202,7 @@ export const CardProfileShows = ({ item }) => {
           </nav>
           <CardTextDate>{item.first_air_date}</CardTextDate>
 
-          <CardTextTitle>{item.name}</CardTextTitle>
+          <CardTextTitle>{item.original_name}</CardTextTitle>
         </CardTextWrapper>
       </CardWrapper>
     </Item>
