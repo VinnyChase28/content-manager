@@ -9,6 +9,8 @@ import getWatchlistMovies from "../hooks/content-hooks/useGetWatchlistMovies";
 import getWatchlistShows from "../hooks/content-hooks/useGetWatchlistShows";
 import { Card } from "../components/Card/Card";
 import { CardShows } from "../components/Card/CardShows";
+import { CardProfile } from "../components/Card/CardProfile";
+import { CardProfileShows } from "../components/Card/CardProfileShows";
 
 const Cards = styled.div`
   display: flex;
@@ -50,13 +52,13 @@ export default function Profile() {
       <h1>Movie Watchlist</h1>
       <Cards>
         {watchMovieData?.map((item) => (
-          <Card key={item.id} item={item} />
+          <CardProfile key={item.id} item={item} />
         ))}
       </Cards>
       <h1>Show Watchlist</h1>
       <Cards>
         {watchShowData?.map((item) => (
-          <CardShows key={item.id} item={item} />
+          <CardProfileShows key={item.id} item={item} />
         ))}
       </Cards>
       <h1>Favorite Movies</h1>
@@ -68,7 +70,7 @@ export default function Profile() {
       <h1>Favorite Shows</h1>
       <Cards>
         {favShowData?.map((item) => (
-          <CardShows key={item.id} item={item} />
+          <CardProfileShows key={item.id} item={item} />
         ))}
       </Cards>
       <button onClick={signOut}>Sign Out</button>
