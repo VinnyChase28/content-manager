@@ -127,7 +127,7 @@ export const CardGames = ({ item }) => {
       game_id: item.id,
       name: item.name,
       summary: item.summary,
-      image_id: item.cover.image_id,
+      image_id: item.cover?.image_id,
       first_release_date: item.first_release_date,
     },
     []
@@ -197,10 +197,12 @@ export const CardGames = ({ item }) => {
                         <Col>
                           <Description>{item.summary}</Description>
                           <Row>
-                            <ModalButton onClick={() => addMovie.mutate()}>
+                            <ModalButton onClick={() => addFavGame.mutate()}>
                               + Favorite
                             </ModalButton>
-                            <ModalButton>+ Watchlist</ModalButton>
+                            <ModalButton onClick={() => addWatchGame.mutate()}>
+                              + Watchlist
+                            </ModalButton>
                           </Row>
                         </Col>
                         <Img src={idgmImgURL} />

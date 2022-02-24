@@ -115,11 +115,11 @@ export default function Profile() {
           <Row>
             <Row>
               <Button active={active === 0} id={0} onClick={handleClick}>
-                Favorites
+                Watchlist
               </Button>
 
               <Button active={active === 1} id={1} onClick={handleClick}>
-                Watchlist
+                Favorites
               </Button>
             </Row>
           </Row>
