@@ -124,7 +124,7 @@ export const CardGames = ({ item }) => {
 
   const addWatchGame = addWatchlistGame(
     {
-      game_id: item.game_id,
+      game_id: item.id,
       name: item.name,
       summary: item.summary,
       image_id: item.cover.image_id,

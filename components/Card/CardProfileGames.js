@@ -14,8 +14,8 @@ import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 import styled from "styled-components";
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import FadeIn from "../animations/FadeIn";
-import delFavoriteMovie from "../../hooks/content-hooks/delete/useDelFavoriteMovie";
-import delWatchlistMovie from "../../hooks/content-hooks/useDelWatchlistMovie";
+import delFavoriteGame from "../../hooks/content-hooks/delete/useDelFavoriteGame";
+import delWatchlistGame from "../../hooks/content-hooks/delete/useDelWatchlistGame";
 
 const StyledModal = Modal.styled`
   width: 1000px;
@@ -111,23 +111,23 @@ export const CardProfileGames = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 
-  const delFavShow = delFavoriteShow(
+  const delFavGame = delFavoriteGame(
     {
-      show_id: item.show_id,
+      game_id: item.game_id,
     },
     []
   );
 
-  const delWatchShow = delWatchlistShow(
+  const delWatchGame = delWatchlistGame(
     {
-      show_id: item.show_id,
+      game_id: item.game_id,
     },
     []
   );
 
-  const deleteShows = () => {
-    delWatchShow.mutate();
-    delFavShow.mutate();
+  const deleteGames = () => {
+    delWatchGame.mutate();
+    delFavGame.mutate();
   };
 
   const onClick = () => setIsActive(!isActive);
@@ -164,7 +164,7 @@ export const CardProfileGames = ({ item }) => {
           >
             <ul>
               <li>
-                <a className="a-hover" onClick={() => deleteShows()}>
+                <a className="a-hover" onClick={() => deleteGames()}>
                   Remove
                 </a>
               </li>
@@ -188,16 +188,12 @@ export const CardProfileGames = ({ item }) => {
                         <Col>
                           <Description>{item.summary}</Description>
                           <Row>
-                            <ModalButton onClick={() => deleteShows()}>
+                            <ModalButton onClick={() => deleteGames()}>
                               Delete
                             </ModalButton>
                           </Row>
                         </Col>
-                        <Img
-                          src={
-                            "https://image.tmdb.org/t/p/w500" + item.poster_path
-                          }
-                        />
+                        <Img src={idgmImgURL} />
                       </Row>
                       <ModalButton onClick={toggleModal}>Close</ModalButton>
                     </StyledModal>

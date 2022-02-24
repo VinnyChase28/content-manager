@@ -9,7 +9,6 @@ const addWatchGame = async (game, user_id) => {
     image_id: game.image_id,
     first_release_date: game.first_release_date,
     user_id,
-    user_id,
   });
 
   if (error) {

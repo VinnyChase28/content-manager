@@ -10,6 +10,7 @@ import { Card } from "../components/Card/Card";
 import { CardShows } from "../components/Card/CardShows";
 import { CardGames } from "../components/Card/CardGames";
 import { Input } from "../components/Input/Input";
+
 import axios from "axios";
 import { set } from "lodash";
 

@@ -199,10 +199,9 @@ export const CardProfile = ({ item }) => {
                         <Col>
                           <Description>{item.overview}</Description>
                           <Row>
-                            <ModalButton onClick={() => addMovie.mutate()}>
-                              + Favorite
+                            <ModalButton onClick={() => deleteContent()}>
+                              Delete
                             </ModalButton>
-                            <ModalButton>+ Watchlist</ModalButton>
                           </Row>
                         </Col>
                         <Img
