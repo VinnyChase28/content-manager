@@ -12,7 +12,7 @@ import {
   ReactQueryDevtools,
 } from "react-query";
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
-
+import GoTop from "../components/GoTop/useGoTop";
 
 const FadingBackground = styled(BaseModalBackground)`
   opacity: ${(props) => props.opacity};
@@ -88,6 +88,7 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <CheckAuth />
         <Component {...pageProps} />
+        <GoTop className="back-to-top" />
       </QueryClientProvider>
     </ModalProvider>
   );

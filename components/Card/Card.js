@@ -158,7 +158,6 @@ export const Card = ({ item }) => {
           <Arrow />
         </Button>
 
-    
         <CardImage
           background={"https://image.tmdb.org/t/p/w500" + item.poster_path}
         />

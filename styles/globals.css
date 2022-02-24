@@ -24,7 +24,7 @@ a {
   position: absolute;
   top: 60px;
   right: 0;
-  width: 300px;
+  width: 200px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
@@ -86,4 +86,28 @@ a {
 
 .a-hover:hover {
   cursor: pointer;
+}
+
+.container {
+  width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 50px;
+  background: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0 5px 10px #ccc;
+}
+
+.back-to-top:hover {
+  background: pink;
+  color: black;
 }
