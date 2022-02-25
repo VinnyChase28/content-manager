@@ -14,6 +14,7 @@ import { Input } from "../components/Input/Input";
 import axios from "axios";
 import { set } from "lodash";
 
+
 const Hero = styled.div`
   margin: auto;
   text-align: center;
@@ -128,7 +129,7 @@ export default function Home({ isConnected }) {
           <Spacer></Spacer>
         </Heading>
 
-        <FadeIn duration="2s" delay="2.5s">
+        <FadeIn duration="1s" delay="1.5s">
           <Row>
             <Button active={active === 0} id={0} onClick={handleClick}>
               Movies

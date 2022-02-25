@@ -34,10 +34,10 @@ export default function TextAnimation(props) {
   return (
     <div>
       <Wrapper>
-        <FadeInAndOut duration="2s" delay="0.2s">
+        <FadeInAndOut duration="1s" delay="0.2s">
           <Text1>Welcome</Text1>
         </FadeInAndOut>
-        <FadeIn duration="2s" delay="2.2s">
+        <FadeIn duration="1s" delay="1.2s">
           <Text2>What would you like to search?</Text2>
         </FadeIn>
       </Wrapper>

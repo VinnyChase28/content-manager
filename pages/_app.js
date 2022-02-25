@@ -14,6 +14,8 @@ import {
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import GoTop from "../components/GoTop/useGoTop";
 
+import { device } from "../components/Device/Device";
+
 const FadingBackground = styled(BaseModalBackground)`
   opacity: ${(props) => props.opacity};
   transition: all 0.3s ease-in-out;
@@ -26,6 +28,60 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+const MenuLabel = styled.label`
+  background-color: transparent;
+  position: fixed;
+  border-radius: 8px;
+  top: 1.5rem;
+  left: 2rem;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 1rem 3rem rgba(182, 237, 200, 0.3);
+  text-align: center;
+  @media ${device.laptop} {
+    display: none;
+  }
+`;
+
+const Icon = styled.span`
+  position: relative;
+  background-color: ${(props) => (props.clicked ? "transparent" : "white")};
+  width: 2rem;
+  height: 2px;
+  display: inline-block;
+  margin-top: 1.5rem;
+
+  &::before,
+  &::after {
+    content: "";
+    background-color: white;
+    width: 2rem;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s;
+  }
+  &::before {
+    top: ${(props) => (props.clicked ? "0" : "-0.8rem")};
+    transform: ${(props) => (props.clicked ? "rotate(135deg)" : "rotate(0)")};
+  }
+  &::after {
+    top: ${(props) => (props.clicked ? "0" : "0.8rem")};
+    transform: ${(props) => (props.clicked ? "rotate(-135deg)" : "rotate(0)")};
+  }
+  ${MenuLabel}:hover &::before {
+    top: ${(props) => (props.clicked ? "0" : "-1rem")};
+  }
+  ${MenuLabel}:hover &::after {
+    top: ${(props) => (props.clicked ? "0" : "1rem")};
+  }
+`;
+
+
 
 function MyApp({ Component, pageProps }) {
   //auth router
@@ -52,6 +108,9 @@ function MyApp({ Component, pageProps }) {
     };
   }, []);
 
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+
   useEffect(() => {
     checkUser();
   });
@@ -77,9 +136,24 @@ function MyApp({ Component, pageProps }) {
 
   const CheckAuth = () => {
     if (authenticatedState === "authenticated") {
-      return <NavbarAuthenticated />;
+      return (
+        <>
+          <MenuLabel
+            htmlFor="navi-toggle"
+            onClick={handleClick}
+            htmlFor="navi-toggle"
+          >
+            <Icon clicked={click}>&nbsp;</Icon>
+          </MenuLabel>
+          <NavbarAuthenticated clicked={click} />
+        </>
+      );
     } else {
-      return <Navbar />;
+      return (
+        <>
+          <Navbar />
+        </>
+      );
     }
   };
 
