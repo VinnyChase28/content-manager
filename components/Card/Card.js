@@ -16,6 +16,7 @@ import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import FadeIn from "../animations/FadeIn";
 import addFavoriteMovie from "../../hooks/content-hooks/add/useAddFavoriteMovie";
 import addWatchlistMovie from "../../hooks/content-hooks/add/useAddWatchlistMovie";
+import SuccessMessage from "../Notifications/SuccessMessage";
 
 const StyledModal = Modal.styled`
   width: 1000px;
@@ -151,6 +152,15 @@ export const Card = ({ item }) => {
     });
   }
 
+  const CheckIcon = styled.span`
+    content: "\2713";
+    color: green;
+    font-size: 1em;
+  `;
+
+  const [clickFavorite, setClickFavorite] = useState(false);
+  const [clickWatchlist, setClickWatchlist] = useState(false);
+
   return (
     <Item key={item.id}>
       <CardWrapper>
@@ -169,13 +179,25 @@ export const Card = ({ item }) => {
           >
             <ul>
               <li>
-                <a className="a-hover" onClick={() => addFavMovie.mutate()}>
-                  Favorite
+                <a
+                  className="a-hover"
+                  onClick={() => {
+                    addFavMovie.mutate();
+                    setClickFavorite(true);
+                  }}
+                >
+                  {clickFavorite ? <SuccessMessage /> : "Add to Favorites"}
                 </a>
               </li>
               <li>
-                <a className="a-hover" onClick={() => addWatchMovie.mutate()}>
-                  Add to Watchlist
+                <a
+                  className="a-hover"
+                  onClick={() => {
+                    addWatchMovie.mutate();
+                    setClickWatchlist(true);
+                  }}
+                >
+                  {clickWatchlist ? <SuccessMessage /> : "Add to Watchlist"}
                 </a>
               </li>
               <li>

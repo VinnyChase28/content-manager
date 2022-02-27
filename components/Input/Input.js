@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
+export const InputWrapper = styled.div`
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+`;
 export const Input = styled.input`
-  width: 100%;
-  max-width: 600px;
+  display: inline-block; /* inline by default */
+  width: 100%; /* allow this to just 'work' based on parent context */
   font-size: 18px;
+  max-width: 600px;
   padding: 10px;
-  margin: 30px;
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
   background: gray;
   border: none;
   border-radius: 3px;

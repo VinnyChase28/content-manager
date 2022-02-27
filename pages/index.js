@@ -12,8 +12,6 @@ import { CardGames } from "../components/Card/CardGames";
 import { Input } from "../components/Input/Input";
 
 import axios from "axios";
-import { set } from "lodash";
-
 
 const Hero = styled.div`
   margin: auto;
@@ -167,6 +165,7 @@ export default function Home({ isConnected }) {
               ))}
             </Cards>
           </Content>
+
           <Content active={active === 1}>
             <Input
               onKeyPress={(e) => {

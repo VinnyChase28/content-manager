@@ -81,8 +81,6 @@ const Icon = styled.span`
   }
 `;
 
-
-
 function MyApp({ Component, pageProps }) {
   //auth router
   const router = useRouter();
@@ -138,11 +136,7 @@ function MyApp({ Component, pageProps }) {
     if (authenticatedState === "authenticated") {
       return (
         <>
-          <MenuLabel
-            htmlFor="navi-toggle"
-            onClick={handleClick}
-            htmlFor="navi-toggle"
-          >
+          <MenuLabel onClick={handleClick} htmlFor="navi-toggle">
             <Icon clicked={click}>&nbsp;</Icon>
           </MenuLabel>
           <NavbarAuthenticated clicked={click} />

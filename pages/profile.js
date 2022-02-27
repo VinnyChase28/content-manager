@@ -65,8 +65,6 @@ const Center = styled.div`
 
 const Row = styled.section``;
 
-const style = { color: "white", fontSize: "1.5em", padding: "10px" };
-
 export default function Profile() {
   const [user, setUser] = useState(null);
   const [active, setActive] = useState(null);
