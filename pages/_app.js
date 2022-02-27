@@ -1,10 +1,8 @@
 import "../styles/globals.css";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { supabase } from "../client";
 import { useRouter } from "next/router";
-import Navbar from "../components/NavBar/NavBar";
-import NavbarAuthenticated from "../components/NavBar/NavBarAuthenticated";
+import Layout from "../components/layout";
 import styled from "styled-components";
 import {
   QueryClient,
@@ -14,6 +12,7 @@ import {
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import GoTop from "../components/GoTop/useGoTop";
 
+import Navbar from "../components/Navbar/Navbar";
 import { device } from "../components/Device/Device";
 
 const FadingBackground = styled(BaseModalBackground)`
@@ -106,12 +105,15 @@ function MyApp({ Component, pageProps }) {
     };
   }, []);
 
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  const [navToggled, setNavToggled] = useState(false);
+
+  const handleNavToggle = () => {
+    setNavToggled(!navToggled);
+  };
 
   useEffect(() => {
-    checkUser();
-  });
+    console.log(navToggled);
+  }, [navToggled]);
 
   async function checkUser() {
     /* when the component loads, checks user to show or hide Sign In link */
@@ -132,30 +134,20 @@ function MyApp({ Component, pageProps }) {
     });
   }
 
-  const CheckAuth = () => {
-    if (authenticatedState === "authenticated") {
-      return (
-        <>
-          <MenuLabel onClick={handleClick} htmlFor="navi-toggle">
-            <Icon clicked={click}>&nbsp;</Icon>
-          </MenuLabel>
-          <NavbarAuthenticated clicked={click} />
-        </>
-      );
+  function NavToggle() {
+    if (navToggled) {
+      return <NavBar handleNavToggle={handleNavToggle} />;
     } else {
-      return (
-        <>
-          <Navbar />
-        </>
-      );
+      return null;
     }
-  };
+  }
 
   return (
     <ModalProvider backgroundComponent={FadingBackground}>
       <QueryClientProvider client={queryClient}>
-        <CheckAuth />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
         <GoTop className="back-to-top" />
       </QueryClientProvider>
     </ModalProvider>

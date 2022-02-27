@@ -171,6 +171,7 @@ export default function Profile() {
           </ScrollContainer>
         </Content>
       </FadeIn>
+      <div onClick={signOut}>Sign Out</div>
     </div>
   );
 }
