@@ -1,22 +1,18 @@
-import "../styles/globals.css";
-import { useState, useEffect, useRef } from "react";
-import { supabase } from "../client";
 import { useRouter } from "next/router";
-import styled from "styled-components";
+import { useEffect, useRef, useState } from "react";
 import {
   QueryClient,
-  QueryClientProvider,
-  ReactQueryDevtools,
+  QueryClientProvider
 } from "react-query";
-import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
-import GoTop from "../components/GoTop/useGoTop";
-
-import Navbar from "../components/Navbar/Navbar";
+import styled from "styled-components";
+import { BaseModalBackground, ModalProvider } from "styled-react-modal";
+import { supabase } from "../client";
 import { device } from "../components/Device/Device";
-
-import { Burger, Menu } from "../components";
-import FocusLock from "react-focus-lock";
+import GoTop from "../components/GoTop/useGoTop";
 import { useOnClickOutside } from "../hooks/useOnClickOutside";
+import "../styles/globals.css";
+
+
 const FadingBackground = styled(BaseModalBackground)`
   opacity: ${(props) => props.opacity};
   transition: all 0.3s ease-in-out;

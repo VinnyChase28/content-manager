@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { CardGames } from "../components/Card/CardGames";
+import React, { useEffect, useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-import {
-  SectionHeaderPopular,
-  SectionHeaderRated,
-  SectionHeaderUpcoming,
-  SectionHeaderToday,
-} from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
-
+import { CardGames } from "../components/Card/CardGames";
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
 import { CardContainer } from "../components/Scale/Scale";
+import {
+  SectionHeaderRated,
+  SectionHeaderUpcoming
+} from "../components/SectionHeader/SectionHeader";
+
 
 const GameSearchView = (props) => {
   const [popularResults, setPopularData] = useState([]);

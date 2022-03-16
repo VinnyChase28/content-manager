@@ -1,20 +1,19 @@
+import axios from "axios";
 import Head from "next/head";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import TextAnimation from "../components/animations/TextAnimation";
 import FadeIn from "../components/animations/FadeIn";
-import { Content } from "../components/Tabs/Tab";
+import TextAnimation from "../components/animations/TextAnimation";
 import { Button } from "../components/Button/Button";
-import ScrollContainer from "react-indiana-drag-scroll";
 import { Card } from "../components/Card/Card";
-import { CardShows } from "../components/Card/CardShows";
 import { CardGames } from "../components/Card/CardGames";
+import { CardShows } from "../components/Card/CardShows";
 import { Input } from "../components/Input/Input";
-
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
+import { Content } from "../components/Tabs/Tab";
 
-import axios from "axios";
+
 
 const Hero = styled.div`
   margin: auto;

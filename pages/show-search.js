@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { CardShows } from "../components/Card/CardShows";
+import React, { useEffect, useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-import {
-  SectionHeaderPopular,
-  SectionHeaderRated,
-  SectionHeaderUpcoming,
-  SectionHeaderToday,
-} from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
-import { CardContainer } from "../components/Scale/Scale";
-
+import { CardShows } from "../components/Card/CardShows";
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
+import { CardContainer } from "../components/Scale/Scale";
+import {
+  SectionHeaderPopular,
+  SectionHeaderRated, SectionHeaderToday
+} from "../components/SectionHeader/SectionHeader";
+
 
 let tmdbApiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 

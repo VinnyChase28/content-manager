@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Card } from "../components/Card/Card";
+import React, { useEffect, useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-import {
-  SectionHeaderPopular,
-  SectionHeaderRated,
-  SectionHeaderUpcoming,
-  SectionHeaderToday,
-} from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
-import { MoviePlay, Tv, Game } from "styled-icons/boxicons-regular";
-import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
-
+import { Card } from "../components/Card/Card";
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
 import { CardContainer } from "../components/Scale/Scale";
+import {
+  SectionHeaderPopular,
+  SectionHeaderRated,
+  SectionHeaderUpcoming
+} from "../components/SectionHeader/SectionHeader";
+
 
 const tmdbApiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 

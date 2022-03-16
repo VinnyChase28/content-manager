@@ -1,30 +1,16 @@
-import {
-  CardWrapper,
-  CardImage,
-  CardTextDate,
-  Item,
-  CardTextWrapper,
-  CardTextTitle,
-  Button,
-  Arrow,
-  DropdownContent,
-} from "./CardStyles";
-import { useState, useRef, useEffect } from "react";
-import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
-import styled from "styled-components";
-import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
-import FadeIn from "../animations/FadeIn";
+import { useRef, useState } from "react";
 import delFavoriteShow from "../../hooks/content-hooks/delete/useDelFavoriteShow";
 import delWatchlistShow from "../../hooks/content-hooks/delete/useDelWatchlistShow";
+import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
+import FadeIn from "../animations/FadeIn";
 import {
-  StyledModal,
-  Title,
-  Row,
-  Col,
-  Img,
-  Description,
-  ModalButton,
+  Col, Description, Img, ModalButton, Row, StyledModal,
+  Title
 } from "../Modal/Modal";
+import {
+  Arrow, Button, CardImage,
+  CardTextDate, CardTextTitle, CardTextWrapper, CardWrapper, Item
+} from "./CardStyles";
 
 export const CardProfileShows = ({ item }) => {
   const dropdownRef = useRef(null);

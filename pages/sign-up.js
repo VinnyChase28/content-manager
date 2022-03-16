@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import useCreateUser from "../hooks/useCreateUser.";
-
+import styled from "styled-components";
+import { Button } from "../components/Button/Button";
+import { AuthInput } from "../components/Input/Input";
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
-import styled from "styled-components";
-import { AuthInput } from "../components/Input/Input";
-import { Button } from "../components/Button/Button";
+import useCreateUser from "../hooks/useCreateUser.";
+
 
 const Center = styled.div`
   justify-content: center;

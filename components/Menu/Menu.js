@@ -44,10 +44,10 @@ const Menu = ({ open, ...props }) => {
       )}
       <a
         href="https://github.com/VinnyChase28/content-manager"
+        target="_blank"
         tabIndex={tabIndex}
       >
-        <span aria-hidden="true">⭐</span>
-        Star
+        <span aria-hidden="true">Star ⭐</span>
       </a>
     </StyledMenu>
   );

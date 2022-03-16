@@ -1,31 +1,18 @@
-import {
-  CardWrapper,
-  CardImage,
-  CardTextDate,
-  Item,
-  CardTextWrapper,
-  CardTextTitle,
-  Button,
-  Arrow,
-  DropdownContent,
-} from "./CardStyles";
-import { useState, useRef, useEffect } from "react";
-import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
+import { useRef, useState } from "react";
 import styled from "styled-components";
-import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
-import FadeIn from "../animations/FadeIn";
 import addFavoriteMovie from "../../hooks/content-hooks/add/useAddFavoriteMovie";
 import addWatchlistMovie from "../../hooks/content-hooks/add/useAddWatchlistMovie";
+import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
+import FadeIn from "../animations/FadeIn";
+import {
+  Col, Description, Img, ModalButton, Row, StyledModal,
+  Title
+} from "../Modal/Modal";
 import SuccessMessage from "../Notifications/SuccessMessage";
 import {
-  StyledModal,
-  Title,
-  Row,
-  Col,
-  Img,
-  Description,
-  ModalButton,
-} from "../Modal/Modal";
+  Arrow, Button, CardImage,
+  CardTextDate, CardTextTitle, CardTextWrapper, CardWrapper, Item
+} from "./CardStyles";
 
 export const Card = ({ item }) => {
   const dropdownRef = useRef(null);

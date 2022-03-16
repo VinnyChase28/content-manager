@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useRef, useState } from "react";
+import FocusLock from "react-focus-lock";
 import styled from "styled-components";
 import { supabase } from "../../client";
-import { useRouter } from "next/router";
-import { device } from "../Device/Device";
-
 import { Burger, Menu } from "../../components";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { device } from "../Device/Device";
 
-import FocusLock from "react-focus-lock";
+
 
 export default function Navbar() {
   const userData = supabase.auth.user();

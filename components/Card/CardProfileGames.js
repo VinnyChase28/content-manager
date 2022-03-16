@@ -1,31 +1,20 @@
-import {
-  CardWrapper,
-  CardImage,
-  CardTextDate,
-  Item,
-  CardTextWrapper,
-  CardTextTitle,
-} from "./CardStylesGames";
-
-import { Button, Arrow, DropdownContent } from "./CardStyles";
-
-import { useState, useRef, useEffect } from "react";
-import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
-import styled from "styled-components";
-import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
-import FadeIn from "../animations/FadeIn";
+import { useRef, useState } from "react";
 import delFavoriteGame from "../../hooks/content-hooks/delete/useDelFavoriteGame";
 import delWatchlistGame from "../../hooks/content-hooks/delete/useDelWatchlistGame";
-
+import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
+import FadeIn from "../animations/FadeIn";
 import {
-  StyledModal,
-  Title,
-  Row,
-  Col,
-  Img,
-  Description,
-  ModalButton,
+  Col, Description, Img, ModalButton, Row, StyledModal,
+  Title
 } from "../Modal/Modal";
+import { Arrow, Button } from "./CardStyles";
+import {
+  CardImage,
+  CardTextDate, CardTextTitle, CardTextWrapper, CardWrapper, Item
+} from "./CardStylesGames";
+
+
+
 
 export const CardProfileGames = ({ item }) => {
   const unixTimestamp = item.first_release_date;

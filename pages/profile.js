@@ -1,36 +1,30 @@
 /* pages/profile.js */
-import { useState, useEffect } from "react";
-import { supabase } from "../client";
 import { useRouter } from "next/router";
-import styled from "styled-components";
-import getFavoriteMovies from "../hooks/content-hooks/get/useGetFavoriteMovies";
-import getFavoriteShows from "../hooks/content-hooks/get/useGetFavoriteShows";
-import getWatchlistMovies from "../hooks/content-hooks/get/useGetWatchlistMovies";
-import getWatchlistShows from "../hooks/content-hooks/get/useGetWatchlistShows";
-import getFavoriteGames from "../hooks/content-hooks/get/useGetFavoriteGames";
-import getWatchlistGames from "../hooks/content-hooks/get/useGetWatchlistGames";
-import { Card } from "../components/Card/Card";
-import { CardProfile } from "../components/Card/CardProfile";
-import { CardProfileShows } from "../components/Card/CardProfileShows";
-import { CardProfileGames } from "../components/Card/CardProfileGames";
-import { Content } from "../components/Tabs/Tab";
-import FadeIn from "../components/animations/FadeIn";
-import { Eye } from "@styled-icons/bootstrap/Eye";
-import { FcHeadset } from "react-icons/fc";
-import { Button } from "../components/Button/Button";
-
+import { useEffect, useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-import {
-  SectionHeaderPopular,
-  SectionHeaderRated,
-  SectionHeaderUpcoming,
-  SectionHeaderToday,
-} from "../components/SectionHeader/SectionHeader";
-
-import { CardContainer } from "../components/Scale/Scale";
-
+import styled from "styled-components";
+import { supabase } from "../client";
+import FadeIn from "../components/animations/FadeIn";
+import { Button } from "../components/Button/Button";
+import { CardProfile } from "../components/Card/CardProfile";
+import { CardProfileGames } from "../components/Card/CardProfileGames";
+import { CardProfileShows } from "../components/Card/CardProfileShows";
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
+import { CardContainer } from "../components/Scale/Scale";
+import {
+  SectionHeaderRated
+} from "../components/SectionHeader/SectionHeader";
+import { Content } from "../components/Tabs/Tab";
+import getFavoriteGames from "../hooks/content-hooks/get/useGetFavoriteGames";
+import getFavoriteMovies from "../hooks/content-hooks/get/useGetFavoriteMovies";
+import getFavoriteShows from "../hooks/content-hooks/get/useGetFavoriteShows";
+import getWatchlistGames from "../hooks/content-hooks/get/useGetWatchlistGames";
+import getWatchlistMovies from "../hooks/content-hooks/get/useGetWatchlistMovies";
+import getWatchlistShows from "../hooks/content-hooks/get/useGetWatchlistShows";
+
+
+
 
 const Center = styled.div`
   padding: 20px;

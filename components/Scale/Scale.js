@@ -21,3 +21,9 @@ export const CardContainer = styled.div`
     margin-right: 0px;
   }
 `;
+
+export const CardContainerSearch = styled.div`
+  @media only screen and (max-width: 425px) {
+    transform: scale(0.7);
+  }
+`;
