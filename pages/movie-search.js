@@ -29,17 +29,10 @@ const Container = styled.div`
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
   }
+  @media only screen and (max-width: 425px) {
+    transform: scale(0.7);
+  }
 `;
-
-const StyledModal = Modal.styled`
-  width: 20rem;
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  opacity: ${(props) => props.opacity};
-  transition : all 0.3s ease-in-out;`;
 
 const tmdbApiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 

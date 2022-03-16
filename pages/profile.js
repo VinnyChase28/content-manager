@@ -72,12 +72,12 @@ export default function Profile() {
   const [user, setUser] = useState(null);
   const [active, setActive] = useState(0);
 
-  const { data: favMovieData, isSuccess1, isLoading1 } = getFavoriteMovies();
-  const { data: favShowData, isSuccess2, isLoading2 } = getFavoriteShows();
-  const { data: watchMovieData, isSuccess3, isLoading3 } = getWatchlistMovies();
-  const { data: watchShowData, isSuccess4, isLoading4 } = getWatchlistShows();
-  const { data: favGameData, isSuccess5, isLoading5 } = getFavoriteGames();
-  const { data: watchGameData, isSuccess6, isLoading6 } = getWatchlistGames();
+  const { data: favMovieData } = getFavoriteMovies();
+  const { data: favShowData } = getFavoriteShows();
+  const { data: watchMovieData } = getWatchlistMovies();
+  const { data: watchShowData } = getWatchlistShows();
+  const { data: favGameData } = getFavoriteGames();
+  const { data: watchGameData } = getWatchlistGames();
 
   const router = useRouter();
   useEffect(() => {

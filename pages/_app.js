@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "../client";
 import { useRouter } from "next/router";
 import styled from "styled-components";
@@ -14,6 +14,9 @@ import GoTop from "../components/GoTop/useGoTop";
 import Navbar from "../components/Navbar/Navbar";
 import { device } from "../components/Device/Device";
 
+import { Burger, Menu } from "../components";
+import FocusLock from "react-focus-lock";
+import { useOnClickOutside } from "../hooks/useOnClickOutside";
 const FadingBackground = styled(BaseModalBackground)`
   opacity: ${(props) => props.opacity};
   transition: all 0.3s ease-in-out;
@@ -104,15 +107,11 @@ function MyApp({ Component, pageProps }) {
     };
   }, []);
 
-  const [navToggled, setNavToggled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const node = useRef();
+  const menuId = "main-menu";
 
-  const handleNavToggle = () => {
-    setNavToggled(!navToggled);
-  };
-
-  useEffect(() => {
-    console.log(navToggled);
-  }, [navToggled]);
+  useOnClickOutside(node, () => setOpen(false));
 
   async function checkUser() {
     /* when the component loads, checks user to show or hide Sign In link */
@@ -133,25 +132,26 @@ function MyApp({ Component, pageProps }) {
     });
   }
 
-  function NavToggle() {
-    if (navToggled) {
-      return <NavBar handleNavToggle={handleNavToggle} />;
-    } else {
-      return null;
-    }
-  }
-
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page);
 
   return getLayout(
-    <ModalProvider backgroundComponent={FadingBackground}>
-      <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
+    <>
+      {/* <div ref={node}>
+        <FocusLock disabled={!open}>
+          <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
+          <Menu open={open} setOpen={setOpen} id={menuId} />
+        </FocusLock>
+      </div> */}
 
-        <GoTop className="back-to-top" />
-      </QueryClientProvider>
-    </ModalProvider>
+      <ModalProvider backgroundComponent={FadingBackground}>
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+
+          <GoTop className="back-to-top" />
+        </QueryClientProvider>
+      </ModalProvider>
+    </>
   );
 }
 

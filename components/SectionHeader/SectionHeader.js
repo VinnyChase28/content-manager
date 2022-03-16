@@ -7,10 +7,16 @@ const HeaderStyle = styled.text`
   margin-left: 100px;
   font-size: 2em;
   font-weight: bold;
+  @media only screen and (max-width: 425px) {
+    margin-left: 20px;
+  }
 `;
 
 const Wrapper = styled.section`
   padding: 4em;
+  @media only screen and (max-width: 425px) {
+    padding: 1em;
+  }
   display: flex;
   align-items: center;
 `;
