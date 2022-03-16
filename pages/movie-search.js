@@ -14,25 +14,7 @@ import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
-
-const Container = styled.div`
-  display: flex;
-  margin-bottom: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
-  cursor: move; /* fallback if grab cursor is unsupported */
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-  &:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-  }
-  @media only screen and (max-width: 425px) {
-    transform: scale(0.7);
-  }
-`;
+import { CardContainer } from "../components/Scale/Scale";
 
 const tmdbApiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
@@ -95,27 +77,27 @@ const MovieSearchView = (props) => {
         <FadeIn duration="1s">
           <SectionHeaderUpcoming label="Upcoming" />
           <ScrollContainer horizontal="true">
-            <Container>
+            <CardContainer>
               {results?.upcoming.map((item) => (
                 <Card key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           <SectionHeaderPopular label="Popular" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {results?.popular.map((item) => (
                 <Card key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           <SectionHeaderRated label="Top Rated" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {results?.topRated.map((item) => (
                 <Card key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
         </FadeIn>
       </div>

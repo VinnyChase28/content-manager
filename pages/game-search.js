@@ -12,22 +12,7 @@ import FadeIn from "../components/animations/FadeIn";
 
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
-
-const Container = styled.div`
-  display: flex;
-  margin-bottom: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
-  cursor: move; /* fallback if grab cursor is unsupported */
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-  &:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-  }
-`;
+import { CardContainer } from "../components/Scale/Scale";
 
 const GameSearchView = (props) => {
   const [popularResults, setPopularData] = useState([]);
@@ -67,11 +52,11 @@ const GameSearchView = (props) => {
         <FadeIn duration="2s">
           <SectionHeaderUpcoming label="Upcoming" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {upcomingResults.map((item) => (
                 <CardGames key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           {/* <SectionHeader label="Popular ->" />
         <ScrollContainer>
@@ -83,11 +68,11 @@ const GameSearchView = (props) => {
         </ScrollContainer> */}
           <SectionHeaderRated label="Top Rated" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {topRatedResults.map((item) => (
                 <CardGames key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
         </FadeIn>
       </div>

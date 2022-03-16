@@ -27,37 +27,10 @@ import {
   SectionHeaderToday,
 } from "../components/SectionHeader/SectionHeader";
 
-import { FcIpad, FcElectronics, FcCalculator } from "react-icons/fc";
+import { CardContainer } from "../components/Scale/Scale";
 
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
-
-const Cards = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 50px;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  justify-content: center;
-`;
-
-const Container = styled.div`
-  display: flex;
-  margin-bottom: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
-  cursor: move; /* fallback if grab cursor is unsupported */
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-  &:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-  }
-`;
 
 const Center = styled.div`
   padding: 20px;
@@ -128,49 +101,49 @@ export default function Profile() {
         <Content active={active === 0}>
           <SectionHeaderRated label="Watchlist" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {watchMovieData?.map((item) => (
                 <CardProfile key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {watchShowData?.map((item) => (
                 <CardProfileShows key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {watchGameData?.map((item) => (
                 <CardProfileGames key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
         </Content>
         <Content active={active === 1}>
           <SectionHeaderRated label="Favorites" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {favMovieData?.map((item) => (
                 <CardProfile key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {favShowData?.map((item) => (
                 <CardProfileShows key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {favGameData?.map((item) => (
                 <CardProfileGames key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
         </Content>
       </FadeIn>

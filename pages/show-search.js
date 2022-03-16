@@ -9,21 +9,7 @@ import {
   SectionHeaderToday,
 } from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
-const Container = styled.div`
-  display: flex;
-  margin-bottom: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
-  cursor: move; /* fallback if grab cursor is unsupported */
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-  &:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-  }
-`;
+import { CardContainer } from "../components/Scale/Scale";
 
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
@@ -86,27 +72,27 @@ const ShowSearchView = (props) => {
         <FadeIn duration="1s">
           <SectionHeaderToday label="Airing Today" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {results?.airing_today.map((item) => (
                 <CardShows key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           <SectionHeaderPopular label="Popular" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {results?.popular.map((item) => (
                 <CardShows key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
           <SectionHeaderRated label="Top Rated" />
           <ScrollContainer>
-            <Container>
+            <CardContainer>
               {results?.topRated.map((item) => (
                 <CardShows key={item.id} item={item} />
               ))}
-            </Container>
+            </CardContainer>
           </ScrollContainer>
         </FadeIn>
       </div>
