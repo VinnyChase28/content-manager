@@ -137,13 +137,7 @@ function MyApp({ Component, pageProps }) {
 
   return getLayout(
     <>
-      {/* <div ref={node}>
-        <FocusLock disabled={!open}>
-          <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
-          <Menu open={open} setOpen={setOpen} id={menuId} />
-        </FocusLock>
-      </div> */}
-
+     
       <ModalProvider backgroundComponent={FadingBackground}>
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />

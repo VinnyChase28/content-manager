@@ -32,13 +32,13 @@ const Menu = ({ open, ...props }) => {
         </a>
       ) : (
         <>
-          <a href="/sgn-in" tabIndex={tabIndex}>
+          <a href="/sign-in" tabIndex={tabIndex}>
             <span aria-hidden="true"></span>
             Sign In
           </a>
-          <a href="/sign-out" tabIndex={tabIndex}>
+          <a href="/sign-up" tabIndex={tabIndex}>
             <span aria-hidden="true"></span>
-            Sign Out
+            Sign Up
           </a>
         </>
       )}
