@@ -4,6 +4,16 @@ import useCreateUser from "../hooks/useCreateUser.";
 
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
+import styled from "styled-components";
+import { AuthInput } from "../components/Input/Input";
+import { Button } from "../components/Button/Button";
+
+const Center = styled.div`
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.5rem;
+`;
 
 export default function Signup() {
   const router = useRouter();
@@ -25,30 +35,31 @@ export default function Signup() {
 
   return (
     <div>
-      <div style={{ maxWidth: "420px", margin: "96px auto" }}>
-        <h1>Sign up</h1>
-
+      <Center style={{ maxWidth: "420px", margin: "96px auto" }}>
+        <div>
+          <p>Name</p>
+          <AuthInput onChange={(e) => setName(e.target.value)} />
+        </div>
+        <div>
+          <p>Email</p>
+          <AuthInput onChange={(e) => setEmail(e.target.value)} />
+        </div>
+        <div>
+          <p>Password</p>
+          <AuthInput
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <p>Username</p>
+          <AuthInput onChange={(e) => setUsername(e.target.value)} />
+        </div>
         <div>
           {createUserMutation.isError && (
             <p>{createUserMutation.error.message}</p>
           )}
-          <p>Name</p>
-          <input onChange={(e) => setName(e.target.value)} />
-        </div>
-        <div>
-          <p>Email</p>
-          <input onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div>
-          <p>Password</p>
-          <input onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div>
-          <p>Username</p>
-          <input onChange={(e) => setUsername(e.target.value)} />
-        </div>
-        <div>
-          <button
+          <Button
             className="bg-blue-500 text-white px-8 py-2 rounded w-full"
             onClick={() => createUserMutation.mutate()}
           >
@@ -59,9 +70,9 @@ export default function Signup() {
             ) : (
               <span>Sign up</span>
             )}
-          </button>
+          </Button>
         </div>
-      </div>
+      </Center>
     </div>
   );
 }

@@ -6,6 +6,16 @@ import useLogin from "../hooks/useLogin";
 
 import Layout from "../components/Navbar/layout";
 import Sidebar from "../components/Navbar/Navbar";
+import styled from "styled-components";
+import { AuthInput } from "../components/Input/Input";
+import { Button } from "../components/Button/Button";
+
+const Center = styled.div`
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.5rem;
+`;
 
 export default function Login() {
   const router = useRouter();
@@ -24,20 +34,20 @@ export default function Login() {
 
   return (
     <div>
-      <div style={{ maxWidth: "420px", margin: "96px auto" }}>
+      <Center style={{ maxWidth: "420px", margin: "96px auto" }}>
         <div>
           <p>Email</p>
-          <input type="text" onChange={(e) => setEmail(e.target.value)} />
+          <AuthInput type="text" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className="my-8 w-full lg:w-auto px-4">
           <p>Password</p>
-          <input
+          <AuthInput
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div>
-          <button
+          <Button
             className="bg-blue-500 text-white px-8 py-2 rounded w-full"
             onClick={() => loginMutation.mutate()}
           >
@@ -48,9 +58,9 @@ export default function Login() {
             ) : (
               <span>Login</span>
             )}
-          </button>
+          </Button>
         </div>
-      </div>
+      </Center>
     </div>
   );
 }
