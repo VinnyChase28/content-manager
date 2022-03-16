@@ -1,5 +1,5 @@
-import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 import styled from "styled-components";
+import Modal from "styled-react-modal";
 
 export const StyledModal = Modal.styled`
   width: 1000px;

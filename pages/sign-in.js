@@ -25,7 +25,7 @@ export default function Login() {
   const loginMutation = useLogin({ email, password });
 
   if (loginMutation.isSuccess) {
-    router.push("/");
+    router.push("/profile");
   }
 
   {

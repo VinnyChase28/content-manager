@@ -7,9 +7,8 @@ import Sidebar from "../components/Navbar/Navbar";
 import { CardContainer } from "../components/Scale/Scale";
 import {
   SectionHeaderRated,
-  SectionHeaderUpcoming
+  SectionHeaderUpcoming,
 } from "../components/SectionHeader/SectionHeader";
-
 
 const GameSearchView = (props) => {
   const [popularResults, setPopularData] = useState([]);
@@ -55,14 +54,13 @@ const GameSearchView = (props) => {
               ))}
             </CardContainer>
           </ScrollContainer>
-          {/* <SectionHeader label="Popular ->" />
-        <ScrollContainer>
-          <Container>
-            {popularResults?.map((item) => (
-              <CardGames key={item.id} item={item} />
-            ))}
-          </Container>
-        </ScrollContainer> */}
+          {/* <ScrollContainer>
+            <CardContainer>
+              {popularResults?.map((item) => (
+                <CardGames key={item.id} item={item} />
+              ))}
+            </CardContainer>
+          </ScrollContainer> */}
           <SectionHeaderRated label="Top Rated" />
           <ScrollContainer>
             <CardContainer>

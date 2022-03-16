@@ -6,8 +6,7 @@ import { supabase } from "../../client";
 import { Burger, Menu } from "../../components";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { device } from "../Device/Device";
-
-
+import Image from "next/image";
 
 export default function Navbar() {
   const userData = supabase.auth.user();
@@ -29,6 +28,7 @@ export default function Navbar() {
             </FocusLock>
           </div>
         </Hide>
+        <Image src="/public/logo.png" width={200} height={45} />
         <Link href="/">
           <StyledLink>Search</StyledLink>
         </Link>
