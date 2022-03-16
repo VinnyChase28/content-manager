@@ -12,6 +12,9 @@ import FadeIn from "../components/animations/FadeIn";
 import { MoviePlay, Tv, Game } from "styled-icons/boxicons-regular";
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 
+import Layout from "../components/Navbar/layout";
+import Sidebar from "../components/Navbar/Navbar";
+
 const Container = styled.div`
   display: flex;
   margin-bottom: 50px;
@@ -60,27 +63,6 @@ const urls = {
 const MovieSearchView = (props) => {
   //test
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [opacity, setOpacity] = useState(0);
-
-  function toggleModal(e) {
-    setOpacity(0);
-    setIsOpen(!isOpen);
-  }
-
-  function afterOpen() {
-    setTimeout(() => {
-      setOpacity(1);
-    }, 100);
-  }
-
-  function beforeClose() {
-    return new Promise((resolve) => {
-      setOpacity(0);
-      setTimeout(resolve, 300);
-    });
-  }
-
   // const [movieData, setMovieData] = useState(null);
   const [results, setResults] = useState({
     popular: [],
@@ -119,7 +101,7 @@ const MovieSearchView = (props) => {
       <div>
         <FadeIn duration="1s">
           <SectionHeaderUpcoming label="Upcoming" />
-          <ScrollContainer>
+          <ScrollContainer horizontal="true">
             <Container>
               {results?.upcoming.map((item) => (
                 <Card key={item.id} item={item} />
@@ -149,3 +131,12 @@ const MovieSearchView = (props) => {
 };
 
 export default MovieSearchView;
+
+MovieSearchView.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};

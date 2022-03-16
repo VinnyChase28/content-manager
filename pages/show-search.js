@@ -25,6 +25,9 @@ const Container = styled.div`
   }
 `;
 
+import Layout from "../components/Navbar/layout";
+import Sidebar from "../components/Navbar/Navbar";
+
 let tmdbApiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 const urls = {
@@ -112,3 +115,12 @@ const ShowSearchView = (props) => {
 };
 
 export default ShowSearchView;
+
+ShowSearchView.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};

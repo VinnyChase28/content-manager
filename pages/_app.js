@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
 import { useRouter } from "next/router";
-import Layout from "../components/layout";
 import styled from "styled-components";
 import {
   QueryClient,
@@ -142,12 +141,14 @@ function MyApp({ Component, pageProps }) {
     }
   }
 
-  return (
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page) => page);
+
+  return getLayout(
     <ModalProvider backgroundComponent={FadingBackground}>
       <QueryClientProvider client={queryClient}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Component {...pageProps} />
+
         <GoTop className="back-to-top" />
       </QueryClientProvider>
     </ModalProvider>

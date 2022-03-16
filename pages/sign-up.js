@@ -2,6 +2,9 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useCreateUser from "../hooks/useCreateUser.";
 
+import Layout from "../components/Navbar/layout";
+import Sidebar from "../components/Navbar/Navbar";
+
 export default function Signup() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -62,3 +65,12 @@ export default function Signup() {
     </div>
   );
 }
+
+Signup.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};

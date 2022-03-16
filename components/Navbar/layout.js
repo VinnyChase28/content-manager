@@ -1,9 +1,11 @@
-import Navbar from "./Navbar/Navbar";
+import Head from "next/head";
 
 export default function Layout({ children }) {
   return (
     <>
-      <Navbar />
+      <Head>
+        <title>Layouts Example</title>
+      </Head>
       <main>{children}</main>
     </>
   );

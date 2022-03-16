@@ -11,6 +11,9 @@ import { CardShows } from "../components/Card/CardShows";
 import { CardGames } from "../components/Card/CardGames";
 import { Input } from "../components/Input/Input";
 
+import Layout from "../components/Navbar/layout";
+import Sidebar from "../components/Navbar/Navbar";
+
 import axios from "axios";
 
 const Hero = styled.div`
@@ -217,3 +220,12 @@ export default function Home({ isConnected }) {
     </>
   );
 }
+
+Home.getLayout = function Home(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};

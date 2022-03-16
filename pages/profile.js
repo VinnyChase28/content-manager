@@ -29,6 +29,9 @@ import {
 
 import { FcIpad, FcElectronics, FcCalculator } from "react-icons/fc";
 
+import Layout from "../components/Navbar/layout";
+import Sidebar from "../components/Navbar/Navbar";
+
 const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -67,7 +70,7 @@ const Row = styled.section``;
 
 export default function Profile() {
   const [user, setUser] = useState(null);
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState(0);
 
   const { data: favMovieData, isSuccess1, isLoading1 } = getFavoriteMovies();
   const { data: favShowData, isSuccess2, isLoading2 } = getFavoriteShows();
@@ -92,7 +95,7 @@ export default function Profile() {
 
   async function signOut() {
     await supabase.auth.signOut();
-    router.push("/sign-up");
+    router.push("/sign-in");
   }
 
   //handle tab click
@@ -175,3 +178,12 @@ export default function Profile() {
     </div>
   );
 }
+
+Profile.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};

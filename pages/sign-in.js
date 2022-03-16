@@ -4,6 +4,9 @@ import { supabase } from "../client";
 import { useRouter } from "next/router";
 import useLogin from "../hooks/useLogin";
 
+import Layout from "../components/Navbar/layout";
+import Sidebar from "../components/Navbar/Navbar";
+
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -51,3 +54,11 @@ export default function Login() {
     </div>
   );
 }
+Login.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};

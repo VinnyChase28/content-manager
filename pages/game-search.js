@@ -10,6 +10,9 @@ import {
 } from "../components/SectionHeader/SectionHeader";
 import FadeIn from "../components/animations/FadeIn";
 
+import Layout from "../components/Navbar/layout";
+import Sidebar from "../components/Navbar/Navbar";
+
 const Container = styled.div`
   display: flex;
   margin-bottom: 50px;
@@ -93,3 +96,12 @@ const GameSearchView = (props) => {
 };
 
 export default GameSearchView;
+
+GameSearchView.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};
