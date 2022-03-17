@@ -9,6 +9,13 @@ const Menu = ({ open, ...props }) => {
   const userData = supabase.auth.user();
   return (
     <StyledMenu open={open} aria-hidden={!isHidden} {...props}>
+      <a
+        href="https://github.com/VinnyChase28/content-manager"
+        target="_blank"
+        tabIndex={tabIndex}
+      >
+        <span aria-hidden="true">Star ⭐</span>
+      </a>
       <a href="/" tabIndex={tabIndex}>
         <span aria-hidden="true"></span>
         Search
@@ -42,13 +49,6 @@ const Menu = ({ open, ...props }) => {
           </a>
         </>
       )}
-      <a
-        href="https://github.com/VinnyChase28/content-manager"
-        target="_blank"
-        tabIndex={tabIndex}
-      >
-        <span aria-hidden="true">Star ⭐</span>
-      </a>
     </StyledMenu>
   );
 };

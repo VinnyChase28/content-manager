@@ -28,7 +28,7 @@ export default function Navbar() {
             </FocusLock>
           </div>
         </Hide>
-        <Image src="/public/logo.png" width={200} height={45} />
+        <img src="logo.png" width={200} height={45} />
         <Link href="/">
           <StyledLink>Search</StyledLink>
         </Link>
