@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   var myHeaders = new Headers();
   myHeaders.append("Client-ID", "yhug9qamfl9kkha9zakglsbrgbb5dk");
-  myHeaders.append("Authorization", "Bearer 7anr9v4n8nqac41mqgisd7r4trrjgx");
+  myHeaders.append("Authorization", "Bearer 6gimtvqeziva5z0i9et2yyde4nt8wv");
   myHeaders.append("Content-Type", "text/plain");
 
   var raw =
